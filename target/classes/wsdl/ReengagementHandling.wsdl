@@ -1,0 +1,649 @@
+<wsdl:definitions xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://alu.services.ws.lhs.com" xmlns:intf="http://alu.services.ws.lhs.com" xmlns:tns1="http://services.contract_services_read.v2.beans.ws.lhs.com" xmlns:tns2="http://cug_memberships.services.contract_services_read.v2.beans.ws.lhs.com" xmlns:tns3="http://contract_service_cug_parameters_read.v2.beans.ws.lhs.com" xmlns:tns4="http://num_params.contract_service_cug_parameters_read.v2.beans.ws.lhs.com" xmlns:tns5="http://apc.billcom.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://alu.services.ws.lhs.com">
+<!-- WSDL created by Apache Axis version: 1.4
+Built on Apr 09, 2009 (02:08:07 CEST) -->
+<wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://alu.services.ws.lhs.com">
+<import namespace="http://apc.billcom.com"/>
+<import namespace="http://contract_service_cug_parameters_read.v2.beans.ws.lhs.com"/>
+<import namespace="http://num_params.contract_service_cug_parameters_read.v2.beans.ws.lhs.com"/>
+<import namespace="http://services.contract_services_read.v2.beans.ws.lhs.com"/>
+<import namespace="http://cug_memberships.services.contract_services_read.v2.beans.ws.lhs.com"/>
+<complexType name="GetEnrechissementCrmDemandeStatutRequest">
+<sequence>
+<element name="canalField" nillable="true" type="xsd:string"/>
+<element name="crmNumber" nillable="true" type="xsd:string"/>
+<element name="customerCode" nillable="true" type="xsd:string"/>
+<element name="eventRequestId" nillable="true" type="xsd:string"/>
+<element name="opportunityId" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<element name="getEnrechissementCrmDemandeStatutRequest" type="impl:GetEnrechissementCrmDemandeStatutRequest"/>
+<complexType name="OperationResponse">
+<sequence>
+<element name="bscsErrorCode" nillable="true" type="xsd:string"/>
+<element name="comment" nillable="true" type="xsd:string"/>
+<element name="isSuccessful" nillable="true" type="xsd:boolean"/>
+</sequence>
+</complexType>
+<complexType name="GetEnrechissementCrmDemandeStatutResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="status" nillable="true" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getEnrichissentCrmDemandeStatutReturn" type="impl:GetEnrechissementCrmDemandeStatutResponse"/>
+<complexType name="GetOrcreateCugForcustomerRequest">
+<sequence>
+<element name="customerId" nillable="true" type="xsd:long"/>
+</sequence>
+</complexType>
+<element name="getOrcreateCugForcustomerRequest" type="impl:GetOrcreateCugForcustomerRequest"/>
+<complexType name="BaseSOIBean">
+<sequence/>
+</complexType>
+<complexType name="ArrayOf_tns3_BasicservicegroupassigmentsBeanOut">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="tns2:BasicservicegroupassigmentsBeanOut"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOf_tns2_CugMembershipsBeanOut">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:CugMembershipsBeanOut"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOf_tns5_MultValuesBeanOut">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="tns4:MultValuesBeanOut"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOf_tns4_NumParamsBeanOut">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="tns3:NumParamsBeanOut"/>
+</sequence>
+</complexType>
+<complexType name="CUGBean">
+<sequence>
+<element name="memberShipList" nillable="true" type="impl:ArrayOf_tns2_CugMembershipsBeanOut"/>
+<element name="numParams" nillable="true" type="impl:ArrayOf_tns4_NumParamsBeanOut"/>
+<element name="sncode" nillable="true" type="xsd:long"/>
+<element name="spCode" nillable="true" type="xsd:long"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOfCUGBean">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:CUGBean"/>
+</sequence>
+</complexType>
+<complexType name="GetOrcreateCugForcustomerResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="cug" nillable="true" type="impl:ArrayOfCUGBean"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getOrcreateCugForcustomerReturn" type="impl:GetOrcreateCugForcustomerResponse"/>
+<complexType name="ContratsBean">
+<sequence>
+<element name="contractNumber" nillable="true" type="xsd:string"/>
+<element name="msisdn" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOfContratsBean">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:ContratsBean"/>
+</sequence>
+</complexType>
+<complexType name="AddEnrichssementCrmDemandeRequest">
+<sequence>
+<element name="canalField" nillable="true" type="xsd:string"/>
+<element name="contratBean" nillable="true" type="impl:ArrayOfContratsBean"/>
+<element name="crmNumber" nillable="true" type="xsd:string"/>
+<element name="customerCode" nillable="true" type="xsd:string"/>
+<element name="eventRequestId" nillable="true" type="xsd:string"/>
+<element name="opportunityId" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<element name="addEnrichssementCrmDemandeRequest" type="impl:AddEnrichssementCrmDemandeRequest"/>
+<complexType name="AddEnrichssementCrmDemandeResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence/>
+</extension>
+</complexContent>
+</complexType>
+<element name="addEnrichssementCrmDemandeReturn" type="impl:AddEnrichssementCrmDemandeResponse"/>
+<complexType name="OfferBscsBean">
+<sequence>
+<element name="parameterIdSource" nillable="true" type="xsd:string"/>
+<element name="parameterValueSource" nillable="true" type="xsd:string"/>
+<element name="sncodeSource" nillable="true" type="xsd:string"/>
+<element name="tmcodeofferSource" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<complexType name="GetEligibleOfferForReengagementRequest">
+<sequence>
+<element name="canal" nillable="true" type="xsd:string"/>
+<element name="customerId" nillable="true" type="xsd:string"/>
+<element name="offerBscsBean" nillable="true" type="impl:OfferBscsBean"/>
+<element name="offerSourceCrm" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<element name="getEligibleOfferForReengagementRequest" type="impl:GetEligibleOfferForReengagementRequest"/>
+<complexType name="OfferCibles">
+<sequence>
+<element name="offerCible" nillable="true" type="xsd:string"/>
+<element name="parameterIdCible" nillable="true" type="xsd:string"/>
+<element name="parameterValueCible" nillable="true" type="xsd:string"/>
+<element name="prix" nillable="true" type="xsd:integer"/>
+<element name="sncodeCible" nillable="true" type="xsd:string"/>
+<element name="tmcodeCible" nillable="true" type="xsd:string"/>
+<element name="typeMigration" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOfOfferCibles">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:OfferCibles"/>
+</sequence>
+</complexType>
+<complexType name="GetEligibleOfferForReengagementResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="offerCibles" nillable="true" type="impl:ArrayOfOfferCibles"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getEligibleOfferForReengagementReturn" type="impl:GetEligibleOfferForReengagementResponse"/>
+<complexType name="CoIdRequest">
+<sequence>
+<element name="coId" nillable="true" type="xsd:long"/>
+</sequence>
+</complexType>
+<element name="coIdRequest" type="impl:CoIdRequest"/>
+<element name="activateOnHoldServiceReturn" type="impl:OperationResponse"/>
+<complexType name="OffreBean">
+<sequence>
+<element name="offreDes" nillable="true" type="xsd:string"/>
+<element name="parameterId" nillable="true" type="xsd:long"/>
+<element name="parameterValue" nillable="true" type="xsd:string"/>
+<element name="shdesOffer" nillable="true" type="xsd:string"/>
+<element name="shdesParameter" nillable="true" type="xsd:string"/>
+<element name="shdesSncode" nillable="true" type="xsd:string"/>
+<element name="shdesspcode" nillable="true" type="xsd:string"/>
+<element name="sncode" nillable="true" type="xsd:long"/>
+<element name="sncodeDes" nillable="true" type="xsd:string"/>
+<element name="spcode" nillable="true" type="xsd:long"/>
+<element name="tmcode" nillable="true" type="xsd:long"/>
+<element name="valueDes" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOf_xsd_string">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:string"/>
+</sequence>
+</complexType>
+<complexType name="GetListOfServiceToactivateContratRequest">
+<sequence>
+<element name="coId" nillable="true" type="xsd:long"/>
+<element name="offreInit" nillable="true" type="impl:OffreBean"/>
+<element name="offreTarget" nillable="true" type="impl:OffreBean"/>
+<element name="optionsToAdd" nillable="true" type="impl:ArrayOf_xsd_string"/>
+</sequence>
+</complexType>
+<element name="getListOfServiceToactivateContratRequest" type="impl:GetListOfServiceToactivateContratRequest"/>
+<complexType name="Parameter">
+<complexContent>
+<extension base="impl:BaseSOIBean">
+<sequence>
+<element name="parameterDescription" nillable="true" type="xsd:string"/>
+<element name="parameterId" nillable="true" type="xsd:string"/>
+<element name="parameterValue" nillable="true" type="xsd:string"/>
+<element name="prmType" nillable="true" type="xsd:string"/>
+<element name="valueDes" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfParameter">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:Parameter"/>
+</sequence>
+</complexType>
+<complexType name="ServiceBean">
+<sequence>
+<element name="param" nillable="true" type="impl:ArrayOfParameter"/>
+<element name="sncode" nillable="true" type="xsd:long"/>
+<element name="spcode" nillable="true" type="xsd:long"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOfServiceBean">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:ServiceBean"/>
+</sequence>
+</complexType>
+<complexType name="GetListOfServiceToactivateContratResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="offreInitBscs" nillable="true" type="impl:OffreBean"/>
+<element name="offreTargetBscs" nillable="true" type="impl:OffreBean"/>
+<element name="servicesForContract" nillable="true" type="impl:ArrayOfServiceBean"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getListOfServiceToactivateContratReturn" type="impl:GetListOfServiceToactivateContratResponse"/>
+<complexType name="ArrayOf_tns5_Parameter">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="tns5:Parameter"/>
+</sequence>
+</complexType>
+<complexType name="Service">
+<complexContent>
+<extension base="impl:BaseSOIBean">
+<sequence>
+<element name="des" nillable="true" type="xsd:string"/>
+<element name="param" nillable="true" type="impl:ArrayOf_tns5_Parameter"/>
+<element name="sncode" nillable="true" type="xsd:long"/>
+<element name="spcode" nillable="true" type="xsd:long"/>
+<element name="type" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfService">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:Service"/>
+</sequence>
+</complexType>
+<complexType name="ActivateServiceParamter">
+<sequence>
+<element name="coId" nillable="true" type="xsd:long"/>
+<element name="coIdPub" nillable="true" type="xsd:string"/>
+<element name="services" nillable="true" type="impl:ArrayOfService"/>
+</sequence>
+</complexType>
+<element name="activateAndSetParameterServicesRequest" type="impl:ActivateServiceParamter"/>
+<complexType name="ActivateServiceParamterResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="finished" type="xsd:boolean"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="activateAndSetParameterServicesForReengagementReturn" type="impl:ActivateServiceParamterResponse"/>
+<complexType name="GetBscsOfferAndServciesFromCrmDemandeRequest">
+<sequence>
+<element name="listCoCode" nillable="true" type="impl:ArrayOf_xsd_string"/>
+<element name="offreInit" nillable="true" type="xsd:string"/>
+<element name="offreTarget" nillable="true" type="xsd:string"/>
+<element name="optionsToAdd" nillable="true" type="impl:ArrayOf_xsd_string"/>
+<element name="optionsTodelete" nillable="true" type="impl:ArrayOf_xsd_string"/>
+</sequence>
+</complexType>
+<element name="getBscsOfferAndServciesFromCrmDemandeRequest" type="impl:GetBscsOfferAndServciesFromCrmDemandeRequest"/>
+<complexType name="ContractDetails">
+<sequence>
+<element name="coId" nillable="true" type="xsd:long"/>
+<element name="contractCode" nillable="true" type="xsd:string"/>
+<element name="customerCode" nillable="true" type="xsd:string"/>
+<element name="customerId" nillable="true" type="xsd:long"/>
+<element name="msisdn" nillable="true" type="xsd:string"/>
+<element name="tmcode" nillable="true" type="xsd:long"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOfContractDetails">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:ContractDetails"/>
+</sequence>
+</complexType>
+<complexType name="ServiceBeanCrm">
+<sequence>
+<element name="parameterDescription" nillable="true" type="xsd:string"/>
+<element name="parameterId" nillable="true" type="xsd:string"/>
+<element name="parameterValue" nillable="true" type="xsd:string"/>
+<element name="prmType" nillable="true" type="xsd:string"/>
+<element name="sncode" nillable="true" type="xsd:long"/>
+<element name="spcode" nillable="true" type="xsd:long"/>
+<element name="valueDes" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOfServiceBeanCrm">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:ServiceBeanCrm"/>
+</sequence>
+</complexType>
+<complexType name="GetBscsOfferAndServciesFromCrmDemandeResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="contractDetails" nillable="true" type="impl:ArrayOfContractDetails"/>
+<element name="offreInitBscs" nillable="true" type="impl:OffreBean"/>
+<element name="offreTargetBscs" nillable="true" type="impl:OffreBean"/>
+<element name="optionToAddBscs" nillable="true" type="impl:ArrayOfServiceBeanCrm"/>
+<element name="optionsTodeleteBscs" nillable="true" type="impl:ArrayOfServiceBeanCrm"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getBscsOfferAndServciesFromCrmDemandeReturn" type="impl:GetBscsOfferAndServciesFromCrmDemandeResponse"/>
+<element name="UnexpectedErrorFault" type="impl:UnexpectedErrorFault"/>
+<complexType name="UnexpectedErrorFault">
+<sequence>
+<element name="faultcode" type="xsd:string"/>
+<element name="faultstring" type="xsd:string"/>
+</sequence>
+</complexType>
+</schema>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://cug_memberships.services.contract_services_read.v2.beans.ws.lhs.com">
+<import namespace="http://alu.services.ws.lhs.com"/>
+<import namespace="http://apc.billcom.com"/>
+<import namespace="http://contract_service_cug_parameters_read.v2.beans.ws.lhs.com"/>
+<import namespace="http://num_params.contract_service_cug_parameters_read.v2.beans.ws.lhs.com"/>
+<import namespace="http://services.contract_services_read.v2.beans.ws.lhs.com"/>
+<complexType name="BasicservicegroupassigmentsBeanOut">
+<complexContent>
+<extension base="impl:BaseSOIBean">
+<sequence>
+<element name="bsgDes" nillable="true" type="xsd:string"/>
+<element name="bsgId" nillable="true" type="xsd:long"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+</schema>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://services.contract_services_read.v2.beans.ws.lhs.com">
+<import namespace="http://alu.services.ws.lhs.com"/>
+<import namespace="http://apc.billcom.com"/>
+<import namespace="http://contract_service_cug_parameters_read.v2.beans.ws.lhs.com"/>
+<import namespace="http://num_params.contract_service_cug_parameters_read.v2.beans.ws.lhs.com"/>
+<import namespace="http://cug_memberships.services.contract_services_read.v2.beans.ws.lhs.com"/>
+<complexType name="CugMembershipsBeanOut">
+<complexContent>
+<extension base="impl:BaseSOIBean">
+<sequence>
+<element name="basicservicegroupassigments" nillable="true" type="impl:ArrayOf_tns3_BasicservicegroupassigmentsBeanOut"/>
+<element name="cugId" nillable="true" type="xsd:long"/>
+<element name="cugIndex" nillable="true" type="xsd:long"/>
+<element name="cugInterlockCode" nillable="true" type="xsd:string"/>
+<element name="cugName" nillable="true" type="xsd:string"/>
+<element name="cugPendingStatus" nillable="true" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+</schema>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://num_params.contract_service_cug_parameters_read.v2.beans.ws.lhs.com">
+<import namespace="http://alu.services.ws.lhs.com"/>
+<import namespace="http://apc.billcom.com"/>
+<import namespace="http://contract_service_cug_parameters_read.v2.beans.ws.lhs.com"/>
+<import namespace="http://services.contract_services_read.v2.beans.ws.lhs.com"/>
+<import namespace="http://cug_memberships.services.contract_services_read.v2.beans.ws.lhs.com"/>
+<complexType name="MultValuesBeanOut">
+<complexContent>
+<extension base="impl:BaseSOIBean">
+<sequence>
+<element name="value" nillable="true" type="xsd:string"/>
+<element name="valueDes" nillable="true" type="xsd:string"/>
+<element name="valuePub" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+</schema>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://contract_service_cug_parameters_read.v2.beans.ws.lhs.com">
+<import namespace="http://alu.services.ws.lhs.com"/>
+<import namespace="http://apc.billcom.com"/>
+<import namespace="http://num_params.contract_service_cug_parameters_read.v2.beans.ws.lhs.com"/>
+<import namespace="http://services.contract_services_read.v2.beans.ws.lhs.com"/>
+<import namespace="http://cug_memberships.services.contract_services_read.v2.beans.ws.lhs.com"/>
+<complexType name="NumParamsBeanOut">
+<complexContent>
+<extension base="impl:BaseSOIBean">
+<sequence>
+<element name="bsgId" nillable="true" type="xsd:long"/>
+<element name="complexLevel" nillable="true" type="xsd:long"/>
+<element name="complexNo" nillable="true" type="xsd:long"/>
+<element name="cugId" nillable="true" type="xsd:long"/>
+<element name="dataType" nillable="true" type="xsd:string"/>
+<element name="multValues" nillable="true" type="impl:ArrayOf_tns5_MultValuesBeanOut"/>
+<element name="parentNo" nillable="true" type="xsd:long"/>
+<element name="prmDes" nillable="true" type="xsd:string"/>
+<element name="prmId" nillable="true" type="xsd:long"/>
+<element name="prmIdPub" nillable="true" type="xsd:string"/>
+<element name="prmNo" nillable="true" type="xsd:long"/>
+<element name="requestId" nillable="true" type="xsd:long"/>
+<element name="siblingNo" nillable="true" type="xsd:long"/>
+<element name="type" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+</schema>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://apc.billcom.com">
+<import namespace="http://alu.services.ws.lhs.com"/>
+<import namespace="http://contract_service_cug_parameters_read.v2.beans.ws.lhs.com"/>
+<import namespace="http://num_params.contract_service_cug_parameters_read.v2.beans.ws.lhs.com"/>
+<import namespace="http://services.contract_services_read.v2.beans.ws.lhs.com"/>
+<import namespace="http://cug_memberships.services.contract_services_read.v2.beans.ws.lhs.com"/>
+<complexType name="Parameter">
+<complexContent>
+<extension base="impl:BaseSOIBean">
+<sequence>
+<element name="prmDes" nillable="true" type="xsd:string"/>
+<element name="prmId" nillable="true" type="xsd:long"/>
+<element name="prmType" nillable="true" type="xsd:string"/>
+<element name="value" nillable="true" type="xsd:string"/>
+<element name="valueDes" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+</schema>
+</wsdl:types>
+<wsdl:message name="getOrcreateCugForcustomerRequest">
+<wsdl:part element="impl:getOrcreateCugForcustomerRequest" name="getOrcreateCugForcustomerRequest"/>
+</wsdl:message>
+<wsdl:message name="activateOnHoldServiceRequest">
+<wsdl:part element="impl:coIdRequest" name="coIdRequest"/>
+</wsdl:message>
+<wsdl:message name="getListOfServiceToactivateContratResponse">
+<wsdl:part element="impl:getListOfServiceToactivateContratReturn" name="getListOfServiceToactivateContratReturn"/>
+</wsdl:message>
+<wsdl:message name="getBscsOfferAndServciesFromCrmDemandeRequest">
+<wsdl:part element="impl:getBscsOfferAndServciesFromCrmDemandeRequest" name="getBscsOfferAndServciesFromCrmDemandeRequest"/>
+</wsdl:message>
+<wsdl:message name="getBscsOfferAndServciesFromCrmDemandeResponse">
+<wsdl:part element="impl:getBscsOfferAndServciesFromCrmDemandeReturn" name="getBscsOfferAndServciesFromCrmDemandeReturn"/>
+</wsdl:message>
+<wsdl:message name="addEnrichssementCrmDemandeResponse">
+<wsdl:part element="impl:addEnrichssementCrmDemandeReturn" name="addEnrichssementCrmDemandeReturn"/>
+</wsdl:message>
+<wsdl:message name="activateAndSetParameterServicesForReengagementResponse">
+<wsdl:part element="impl:activateAndSetParameterServicesForReengagementReturn" name="activateAndSetParameterServicesForReengagementReturn"/>
+</wsdl:message>
+<wsdl:message name="UnexpectedError">
+<wsdl:part element="impl:UnexpectedErrorFault" name="UnexpectedError"/>
+</wsdl:message>
+<wsdl:message name="getListOfServiceToactivateContratRequest">
+<wsdl:part element="impl:getListOfServiceToactivateContratRequest" name="getListOfServiceToactivateContratRequest"/>
+</wsdl:message>
+<wsdl:message name="getEnrichissentCrmDemandeStatutRequest">
+<wsdl:part element="impl:getEnrechissementCrmDemandeStatutRequest" name="getEnrechissementCrmDemandeStatutRequest"/>
+</wsdl:message>
+<wsdl:message name="getEligibleOfferForReengagementRequest">
+<wsdl:part element="impl:getEligibleOfferForReengagementRequest" name="getEligibleOfferForReengagementRequest"/>
+</wsdl:message>
+<wsdl:message name="activateAndSetParameterServicesForReengagementRequest">
+<wsdl:part element="impl:activateAndSetParameterServicesRequest" name="activateAndSetParameterServicesRequest"/>
+</wsdl:message>
+<wsdl:message name="getEligibleOfferForReengagementResponse">
+<wsdl:part element="impl:getEligibleOfferForReengagementReturn" name="getEligibleOfferForReengagementReturn"/>
+</wsdl:message>
+<wsdl:message name="addEnrichssementCrmDemandeRequest">
+<wsdl:part element="impl:addEnrichssementCrmDemandeRequest" name="addEnrichssementCrmDemandeRequest"/>
+</wsdl:message>
+<wsdl:message name="activateOnHoldServiceResponse">
+<wsdl:part element="impl:activateOnHoldServiceReturn" name="activateOnHoldServiceReturn"/>
+</wsdl:message>
+<wsdl:message name="getOrcreateCugForcustomerResponse">
+<wsdl:part element="impl:getOrcreateCugForcustomerReturn" name="getOrcreateCugForcustomerReturn"/>
+</wsdl:message>
+<wsdl:message name="getEnrichissentCrmDemandeStatutResponse">
+<wsdl:part element="impl:getEnrichissentCrmDemandeStatutReturn" name="getEnrichissentCrmDemandeStatutReturn"/>
+</wsdl:message>
+<wsdl:portType name="ReengagementHandling">
+<wsdl:operation name="getEnrichissentCrmDemandeStatut" parameterOrder="getEnrechissementCrmDemandeStatutRequest">
+<wsdl:input message="impl:getEnrichissentCrmDemandeStatutRequest" name="getEnrichissentCrmDemandeStatutRequest"/>
+<wsdl:output message="impl:getEnrichissentCrmDemandeStatutResponse" name="getEnrichissentCrmDemandeStatutResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getOrcreateCugForcustomer" parameterOrder="getOrcreateCugForcustomerRequest">
+<wsdl:input message="impl:getOrcreateCugForcustomerRequest" name="getOrcreateCugForcustomerRequest"/>
+<wsdl:output message="impl:getOrcreateCugForcustomerResponse" name="getOrcreateCugForcustomerResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="addEnrichssementCrmDemande" parameterOrder="addEnrichssementCrmDemandeRequest">
+<wsdl:input message="impl:addEnrichssementCrmDemandeRequest" name="addEnrichssementCrmDemandeRequest"/>
+<wsdl:output message="impl:addEnrichssementCrmDemandeResponse" name="addEnrichssementCrmDemandeResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getEligibleOfferForReengagement" parameterOrder="getEligibleOfferForReengagementRequest">
+<wsdl:input message="impl:getEligibleOfferForReengagementRequest" name="getEligibleOfferForReengagementRequest"/>
+<wsdl:output message="impl:getEligibleOfferForReengagementResponse" name="getEligibleOfferForReengagementResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="activateOnHoldService" parameterOrder="coIdRequest">
+<wsdl:input message="impl:activateOnHoldServiceRequest" name="activateOnHoldServiceRequest"/>
+<wsdl:output message="impl:activateOnHoldServiceResponse" name="activateOnHoldServiceResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getListOfServiceToactivateContrat" parameterOrder="getListOfServiceToactivateContratRequest">
+<wsdl:input message="impl:getListOfServiceToactivateContratRequest" name="getListOfServiceToactivateContratRequest"/>
+<wsdl:output message="impl:getListOfServiceToactivateContratResponse" name="getListOfServiceToactivateContratResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="activateAndSetParameterServicesForReengagement" parameterOrder="activateAndSetParameterServicesRequest">
+<wsdl:input message="impl:activateAndSetParameterServicesForReengagementRequest" name="activateAndSetParameterServicesForReengagementRequest"/>
+<wsdl:output message="impl:activateAndSetParameterServicesForReengagementResponse" name="activateAndSetParameterServicesForReengagementResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getBscsOfferAndServciesFromCrmDemande" parameterOrder="getBscsOfferAndServciesFromCrmDemandeRequest">
+<wsdl:input message="impl:getBscsOfferAndServciesFromCrmDemandeRequest" name="getBscsOfferAndServciesFromCrmDemandeRequest"/>
+<wsdl:output message="impl:getBscsOfferAndServciesFromCrmDemandeResponse" name="getBscsOfferAndServciesFromCrmDemandeResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="ReengagementHandlingSoapBinding" type="impl:ReengagementHandling">
+<wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="getEnrichissentCrmDemandeStatut">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getEnrichissentCrmDemandeStatutRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getEnrichissentCrmDemandeStatutResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getOrcreateCugForcustomer">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getOrcreateCugForcustomerRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getOrcreateCugForcustomerResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="addEnrichssementCrmDemande">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="addEnrichssementCrmDemandeRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="addEnrichssementCrmDemandeResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getEligibleOfferForReengagement">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getEligibleOfferForReengagementRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getEligibleOfferForReengagementResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="activateOnHoldService">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="activateOnHoldServiceRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="activateOnHoldServiceResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getListOfServiceToactivateContrat">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getListOfServiceToactivateContratRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getListOfServiceToactivateContratResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="activateAndSetParameterServicesForReengagement">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="activateAndSetParameterServicesForReengagementRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="activateAndSetParameterServicesForReengagementResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getBscsOfferAndServciesFromCrmDemande">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getBscsOfferAndServciesFromCrmDemandeRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getBscsOfferAndServciesFromCrmDemandeResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="ReengagementHandlingService">
+<wsdl:port binding="impl:ReengagementHandlingSoapBinding" name="ReengagementHandling">
+<wsdlsoap:address location="http://192.168.1.11:8080/BscsWsReengagement/services/ReengagementHandling"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

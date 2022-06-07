@@ -1,0 +1,890 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://manager.ws.apc.billcom.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="APCManagerService" targetNamespace="http://manager.ws.apc.billcom.com/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://manager.ws.apc.billcom.com/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://manager.ws.apc.billcom.com/">
+<xs:element name="adjustBalanceBscs" type="tns:adjustBalanceBscs"/>
+<xs:element name="adjustBalanceBscsResponse" type="tns:adjustBalanceBscsResponse"/>
+<xs:element name="adjustBalanceIn" type="tns:adjustBalanceIn"/>
+<xs:element name="adjustBalanceInResponse" type="tns:adjustBalanceInResponse"/>
+<xs:element name="adjustBalanceMigration" type="tns:adjustBalanceMigration"/>
+<xs:element name="adjustBalanceMigrationResponse" type="tns:adjustBalanceMigrationResponse"/>
+<xs:element name="contractHasMigration" type="tns:contractHasMigration"/>
+<xs:element name="contractHasMigrationResponse" type="tns:contractHasMigrationResponse"/>
+<xs:element name="deleteMigration" type="tns:deleteMigration"/>
+<xs:element name="deleteMigrationResponse" type="tns:deleteMigrationResponse"/>
+<xs:element name="getContractHistory" type="tns:getContractHistory"/>
+<xs:element name="getContractHistoryResponse" type="tns:getContractHistoryResponse"/>
+<xs:element name="getDetailsOrder" type="tns:getDetailsOrder"/>
+<xs:element name="getDetailsOrderResponse" type="tns:getDetailsOrderResponse"/>
+<xs:element name="getEligibileContractForMigration" type="tns:getEligibileContractForMigration"/>
+<xs:element name="getEligibileContractForMigrationResponse" type="tns:getEligibileContractForMigrationResponse"/>
+<xs:element name="getListOrderId" type="tns:getListOrderId"/>
+<xs:element name="getListOrderIdResponse" type="tns:getListOrderIdResponse"/>
+<xs:element name="getMigrationList" type="tns:getMigrationList"/>
+<xs:element name="getMigrationListResponse" type="tns:getMigrationListResponse"/>
+<xs:element name="getMigrationOrder" type="tns:getMigrationOrder"/>
+<xs:element name="getMigrationOrderParentProcess" type="tns:getMigrationOrderParentProcess"/>
+<xs:element name="getMigrationOrderParentProcessResponse" type="tns:getMigrationOrderParentProcessResponse"/>
+<xs:element name="getMigrationOrderResponse" type="tns:getMigrationOrderResponse"/>
+<xs:element name="getNBofmigrationexecutedforcontract" type="tns:getNBofmigrationexecutedforcontract"/>
+<xs:element name="getNBofmigrationexecutedforcontractResponse" type="tns:getNBofmigrationexecutedforcontractResponse"/>
+<xs:element name="percistMigration" type="tns:percistMigration"/>
+<xs:element name="percistMigrationResponse" type="tns:percistMigrationResponse"/>
+<xs:element name="sendEmailMigration" type="tns:sendEmailMigration"/>
+<xs:element name="sendEmailMigrationResponse" type="tns:sendEmailMigrationResponse"/>
+<xs:element name="updateCoIdMigrationOrder" type="tns:updateCoIdMigrationOrder"/>
+<xs:element name="updateCoIdMigrationOrderResponse" type="tns:updateCoIdMigrationOrderResponse"/>
+<xs:element name="updateMigration" type="tns:updateMigration"/>
+<xs:element name="updateMigrationResponse" type="tns:updateMigrationResponse"/>
+<xs:element name="verifyFunctionalEligebility" type="tns:verifyFunctionalEligebility"/>
+<xs:element name="verifyFunctionalEligebilityResponse" type="tns:verifyFunctionalEligebilityResponse"/>
+<xs:element name="verifyTechnicalEligibility" type="tns:verifyTechnicalEligibility"/>
+<xs:element name="verifyTechnicalEligibilityResponse" type="tns:verifyTechnicalEligibilityResponse"/>
+<xs:complexType name="contractHasMigration">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="tns:verifyMigrationRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="verifyMigrationRequest">
+<xs:sequence>
+<xs:element minOccurs="0" name="coId" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="contractHasMigrationResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:verifyMigrationResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="verifyMigrationResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="response" type="tns:operationResponseAPC"/>
+<xs:element name="verified" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="operationResponseAPC">
+<xs:sequence>
+<xs:element minOccurs="0" name="comment" type="xs:string"/>
+<xs:element minOccurs="0" name="error" type="xs:string"/>
+<xs:element minOccurs="0" name="isSuccessful" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="sendEmailMigration">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="tns:sendMailRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="sendMailRequest">
+<xs:sequence>
+<xs:element minOccurs="0" name="modeConection" type="xs:string"/>
+<xs:element minOccurs="0" name="subject" type="xs:string"/>
+<xs:element minOccurs="0" name="text" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="sendEmailMigrationResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:sendEmailResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="sendEmailResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="finished" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getContractHistory">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getContractHistoryResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:getMigrationsResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getMigrationsResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="beans" nillable="true" type="tns:migrationBean"/>
+<xs:element minOccurs="0" name="response" type="tns:operationResponseAPC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="migrationBean">
+<xs:sequence>
+<xs:element minOccurs="0" name="coCode" type="xs:string"/>
+<xs:element minOccurs="0" name="coId" type="xs:string"/>
+<xs:element minOccurs="0" name="csId" type="xs:string"/>
+<xs:element minOccurs="0" name="custCode" type="xs:string"/>
+<xs:element minOccurs="0" name="dateEnd" type="xs:string"/>
+<xs:element minOccurs="0" name="dateStart" type="xs:string"/>
+<xs:element minOccurs="0" name="desInit" type="xs:string"/>
+<xs:element minOccurs="0" name="desTarget" type="xs:string"/>
+<xs:element minOccurs="0" name="dueDate" type="xs:string"/>
+<xs:element minOccurs="0" name="migComment" type="xs:string"/>
+<xs:element minOccurs="0" name="msisdn" type="xs:string"/>
+<xs:element minOccurs="0" name="oldCoCode" type="xs:string"/>
+<xs:element minOccurs="0" name="oldCoid" type="xs:string"/>
+<xs:element minOccurs="0" name="orderId" type="xs:integer"/>
+<xs:element minOccurs="0" name="remarque" type="xs:string"/>
+<xs:element minOccurs="0" name="rpcodeInit" type="xs:string"/>
+<xs:element minOccurs="0" name="rpcodeTarget" type="xs:string"/>
+<xs:element name="status" type="xs:int"/>
+<xs:element minOccurs="0" name="task" type="xs:string"/>
+<xs:element minOccurs="0" name="userGroup" type="xs:string"/>
+<xs:element minOccurs="0" name="userId" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="adjustBalanceBscs">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="tns:adjustBalanceRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="adjustBalanceRequest">
+<xs:sequence>
+<xs:element minOccurs="0" name="amount" type="xs:long"/>
+<xs:element minOccurs="0" name="coId" type="xs:long"/>
+<xs:element minOccurs="0" name="csId" type="xs:long"/>
+<xs:element minOccurs="0" name="desSource" type="xs:string"/>
+<xs:element minOccurs="0" name="desTarget" type="xs:string"/>
+<xs:element minOccurs="0" name="msisdn" type="xs:string"/>
+<xs:element minOccurs="0" name="rpCodeCible" type="xs:long"/>
+<xs:element minOccurs="0" name="rpCodeSource" type="xs:long"/>
+<xs:element minOccurs="0" name="valueSource" type="xs:string"/>
+<xs:element minOccurs="0" name="valueTarget" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="adjustBalanceBscsResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:adjustBalanceResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="adjustBalanceResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="comment" type="xs:string"/>
+<xs:element minOccurs="0" name="errorCode" type="xs:string"/>
+<xs:element minOccurs="0" name="finished" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getMigrationOrderParentProcess">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="tns:orderRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="orderRequest">
+<xs:sequence>
+<xs:element minOccurs="0" name="orderId" type="xs:integer"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getMigrationOrderParentProcessResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:getMigrationOrderParentResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getMigrationOrderParentResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="parentProcessInstanceId" type="xs:integer"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="percistMigration">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="tns:percistMigrationOrderRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="percistMigrationOrderRequest">
+<xs:sequence>
+<xs:element minOccurs="0" name="migration" type="tns:migrationBean"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="percistMigrationResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:percistMigrationOrderResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="percistMigrationOrderResponse">
+<xs:sequence>
+<xs:element name="finished" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getNBofmigrationexecutedforcontract">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="tns:nbreMigrationExecutedRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="nbreMigrationExecutedRequest">
+<xs:sequence>
+<xs:element minOccurs="0" name="coId" type="xs:long"/>
+<xs:element minOccurs="0" name="dueDate" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getNBofmigrationexecutedforcontractResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:nbreMigrationExecutedResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="nbreMigrationExecutedResponse">
+<xs:sequence>
+<xs:element name="numBer" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateMigration">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="tns:updateMigrationOrderRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateMigrationOrderRequest">
+<xs:sequence>
+<xs:element minOccurs="0" name="migration" type="tns:migrationBean"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateMigrationResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:updateMigrationOrderResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateMigrationOrderResponse">
+<xs:sequence>
+<xs:element name="finished" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="deleteMigration">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="tns:orderRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="deleteMigrationResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:deleteMigrationOrderResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="deleteMigrationOrderResponse">
+<xs:sequence>
+<xs:element name="finished" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getMigrationOrder">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="tns:orderRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getMigrationOrderResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:getMigrationResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getMigrationResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="migration" type="tns:migrationBean"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getListOrderId">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getListOrderIdResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getMigrationList">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="tns:getMigrationsRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getMigrationsRequest">
+<xs:sequence>
+<xs:element minOccurs="0" name="dateEnd" type="xs:string"/>
+<xs:element minOccurs="0" name="dateStart" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getMigrationListResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:getMigrationsResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateCoIdMigrationOrder">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"/>
+<xs:element minOccurs="0" name="arg1" type="xs:string"/>
+<xs:element minOccurs="0" name="arg2" type="xs:integer"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateCoIdMigrationOrderResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="adjustBalanceMigration">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="tns:adjustBalanceRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="adjustBalanceMigrationResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:adjustBalanceResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getDetailsOrder">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="tns:orderRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getDetailsOrderResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:getOrderResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getOrderResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="beans" nillable="true" type="tns:detailsOrderBean"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="detailsOrderBean">
+<xs:sequence>
+<xs:element minOccurs="0" name="taskDate" type="xs:string"/>
+<xs:element minOccurs="0" name="taskId" type="xs:string"/>
+<xs:element minOccurs="0" name="taskName" type="xs:string"/>
+<xs:element minOccurs="0" name="tasktype" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="verifyFunctionalEligebility">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="tns:verifyMigrationRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="verifyFunctionalEligebilityResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:verifyEligebilityResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="verifyEligebilityResponse">
+<xs:sequence>
+<xs:element name="eligible" type="xs:boolean"/>
+<xs:element minOccurs="0" name="response" type="tns:operationResponseAPC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="adjustBalanceIn">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="tns:adjustBalanceRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="adjustBalanceInResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:adjustBalanceResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getEligibileContractForMigration">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="tns:getEligibileContractForMigrationRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getEligibileContractForMigrationRequest">
+<xs:sequence>
+<xs:element minOccurs="0" name="csId" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getEligibileContractForMigrationResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:getEligibleContractForMigrationResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getEligibleContractForMigrationResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="bean" nillable="true" type="tns:getEligibleContractForMigrationResponseBean"/>
+<xs:element minOccurs="0" name="response" type="tns:operationResponseAPC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getEligibleContractForMigrationResponseBean">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="coIdList" nillable="true" type="xs:long"/>
+<xs:element minOccurs="0" name="des" type="xs:string"/>
+<xs:element name="numBer" type="xs:int"/>
+<xs:element name="rpCode" type="xs:long"/>
+<xs:element minOccurs="0" name="type" type="xs:string"/>
+<xs:element minOccurs="0" name="value" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="verifyTechnicalEligibility">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="tns:verifyMigrationRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="verifyTechnicalEligibilityResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:verifyEligebilityResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="InvalidInputException" type="tns:InvalidInputException"/>
+<xs:complexType name="InvalidInputException">
+<xs:sequence>
+<xs:element minOccurs="0" name="name" type="xs:string"/>
+<xs:element minOccurs="0" name="errorCode" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="NotFoundException" type="tns:NotFoundException"/>
+<xs:complexType name="NotFoundException">
+<xs:sequence>
+<xs:element minOccurs="0" name="errorCode" type="xs:string"/>
+<xs:element minOccurs="0" name="name" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ParseException" type="tns:ParseException"/>
+<xs:complexType name="ParseException">
+<xs:sequence>
+<xs:element minOccurs="0" name="errorOffset" type="xs:int"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="sendEmailMigration">
+<wsdl:part element="tns:sendEmailMigration" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="getContractHistory">
+<wsdl:part element="tns:getContractHistory" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="ParseException">
+<wsdl:part element="tns:ParseException" name="ParseException"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="adjustBalanceInResponse">
+<wsdl:part element="tns:adjustBalanceInResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="contractHasMigrationResponse">
+<wsdl:part element="tns:contractHasMigrationResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="updateCoIdMigrationOrderResponse">
+<wsdl:part element="tns:updateCoIdMigrationOrderResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="getMigrationOrderParentProcess">
+<wsdl:part element="tns:getMigrationOrderParentProcess" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="verifyFunctionalEligebilityResponse">
+<wsdl:part element="tns:verifyFunctionalEligebilityResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="getContractHistoryResponse">
+<wsdl:part element="tns:getContractHistoryResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="adjustBalanceBscsResponse">
+<wsdl:part element="tns:adjustBalanceBscsResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="getEligibileContractForMigrationResponse">
+<wsdl:part element="tns:getEligibileContractForMigrationResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="deleteMigration">
+<wsdl:part element="tns:deleteMigration" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="getListOrderId">
+<wsdl:part element="tns:getListOrderId" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="getMigrationList">
+<wsdl:part element="tns:getMigrationList" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="adjustBalanceMigration">
+<wsdl:part element="tns:adjustBalanceMigration" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="getDetailsOrder">
+<wsdl:part element="tns:getDetailsOrder" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="InvalidInputException">
+<wsdl:part element="tns:InvalidInputException" name="InvalidInputException"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="adjustBalanceMigrationResponse">
+<wsdl:part element="tns:adjustBalanceMigrationResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="contractHasMigration">
+<wsdl:part element="tns:contractHasMigration" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="percistMigrationResponse">
+<wsdl:part element="tns:percistMigrationResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="getDetailsOrderResponse">
+<wsdl:part element="tns:getDetailsOrderResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="updateMigrationResponse">
+<wsdl:part element="tns:updateMigrationResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="adjustBalanceBscs">
+<wsdl:part element="tns:adjustBalanceBscs" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="percistMigration">
+<wsdl:part element="tns:percistMigration" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="getNBofmigrationexecutedforcontract">
+<wsdl:part element="tns:getNBofmigrationexecutedforcontract" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="getListOrderIdResponse">
+<wsdl:part element="tns:getListOrderIdResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="updateMigration">
+<wsdl:part element="tns:updateMigration" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="getMigrationOrderResponse">
+<wsdl:part element="tns:getMigrationOrderResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="getMigrationOrderParentProcessResponse">
+<wsdl:part element="tns:getMigrationOrderParentProcessResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="getMigrationOrder">
+<wsdl:part element="tns:getMigrationOrder" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="NotFoundException">
+<wsdl:part element="tns:NotFoundException" name="NotFoundException"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="updateCoIdMigrationOrder">
+<wsdl:part element="tns:updateCoIdMigrationOrder" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="verifyTechnicalEligibilityResponse">
+<wsdl:part element="tns:verifyTechnicalEligibilityResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="getNBofmigrationexecutedforcontractResponse">
+<wsdl:part element="tns:getNBofmigrationexecutedforcontractResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="getMigrationListResponse">
+<wsdl:part element="tns:getMigrationListResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="verifyFunctionalEligebility">
+<wsdl:part element="tns:verifyFunctionalEligebility" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="sendEmailMigrationResponse">
+<wsdl:part element="tns:sendEmailMigrationResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="deleteMigrationResponse">
+<wsdl:part element="tns:deleteMigrationResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="adjustBalanceIn">
+<wsdl:part element="tns:adjustBalanceIn" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="getEligibileContractForMigration">
+<wsdl:part element="tns:getEligibileContractForMigration" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="verifyTechnicalEligibility">
+<wsdl:part element="tns:verifyTechnicalEligibility" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="APCManager">
+<wsdl:operation name="contractHasMigration">
+<wsdl:input message="tns:contractHasMigration" name="contractHasMigration"> </wsdl:input>
+<wsdl:output message="tns:contractHasMigrationResponse" name="contractHasMigrationResponse"> </wsdl:output>
+<wsdl:fault message="tns:InvalidInputException" name="InvalidInputException"> </wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="sendEmailMigration">
+<wsdl:input message="tns:sendEmailMigration" name="sendEmailMigration"> </wsdl:input>
+<wsdl:output message="tns:sendEmailMigrationResponse" name="sendEmailMigrationResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getContractHistory">
+<wsdl:input message="tns:getContractHistory" name="getContractHistory"> </wsdl:input>
+<wsdl:output message="tns:getContractHistoryResponse" name="getContractHistoryResponse"> </wsdl:output>
+<wsdl:fault message="tns:InvalidInputException" name="InvalidInputException"> </wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="adjustBalanceBscs">
+<wsdl:input message="tns:adjustBalanceBscs" name="adjustBalanceBscs"> </wsdl:input>
+<wsdl:output message="tns:adjustBalanceBscsResponse" name="adjustBalanceBscsResponse"> </wsdl:output>
+<wsdl:fault message="tns:NotFoundException" name="NotFoundException"> </wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getMigrationOrderParentProcess">
+<wsdl:input message="tns:getMigrationOrderParentProcess" name="getMigrationOrderParentProcess"> </wsdl:input>
+<wsdl:output message="tns:getMigrationOrderParentProcessResponse" name="getMigrationOrderParentProcessResponse"> </wsdl:output>
+<wsdl:fault message="tns:InvalidInputException" name="InvalidInputException"> </wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="percistMigration">
+<wsdl:input message="tns:percistMigration" name="percistMigration"> </wsdl:input>
+<wsdl:output message="tns:percistMigrationResponse" name="percistMigrationResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getNBofmigrationexecutedforcontract">
+<wsdl:input message="tns:getNBofmigrationexecutedforcontract" name="getNBofmigrationexecutedforcontract"> </wsdl:input>
+<wsdl:output message="tns:getNBofmigrationexecutedforcontractResponse" name="getNBofmigrationexecutedforcontractResponse"> </wsdl:output>
+<wsdl:fault message="tns:InvalidInputException" name="InvalidInputException"> </wsdl:fault>
+<wsdl:fault message="tns:ParseException" name="ParseException"> </wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="updateMigration">
+<wsdl:input message="tns:updateMigration" name="updateMigration"> </wsdl:input>
+<wsdl:output message="tns:updateMigrationResponse" name="updateMigrationResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="deleteMigration">
+<wsdl:input message="tns:deleteMigration" name="deleteMigration"> </wsdl:input>
+<wsdl:output message="tns:deleteMigrationResponse" name="deleteMigrationResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getMigrationOrder">
+<wsdl:input message="tns:getMigrationOrder" name="getMigrationOrder"> </wsdl:input>
+<wsdl:output message="tns:getMigrationOrderResponse" name="getMigrationOrderResponse"> </wsdl:output>
+<wsdl:fault message="tns:InvalidInputException" name="InvalidInputException"> </wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getListOrderId">
+<wsdl:input message="tns:getListOrderId" name="getListOrderId"> </wsdl:input>
+<wsdl:output message="tns:getListOrderIdResponse" name="getListOrderIdResponse"> </wsdl:output>
+<wsdl:fault message="tns:InvalidInputException" name="InvalidInputException"> </wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getMigrationList">
+<wsdl:input message="tns:getMigrationList" name="getMigrationList"> </wsdl:input>
+<wsdl:output message="tns:getMigrationListResponse" name="getMigrationListResponse"> </wsdl:output>
+<wsdl:fault message="tns:InvalidInputException" name="InvalidInputException"> </wsdl:fault>
+<wsdl:fault message="tns:NotFoundException" name="NotFoundException"> </wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="updateCoIdMigrationOrder">
+<wsdl:input message="tns:updateCoIdMigrationOrder" name="updateCoIdMigrationOrder"> </wsdl:input>
+<wsdl:output message="tns:updateCoIdMigrationOrderResponse" name="updateCoIdMigrationOrderResponse"> </wsdl:output>
+<wsdl:fault message="tns:InvalidInputException" name="InvalidInputException"> </wsdl:fault>
+<wsdl:fault message="tns:NotFoundException" name="NotFoundException"> </wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="adjustBalanceMigration">
+<wsdl:input message="tns:adjustBalanceMigration" name="adjustBalanceMigration"> </wsdl:input>
+<wsdl:output message="tns:adjustBalanceMigrationResponse" name="adjustBalanceMigrationResponse"> </wsdl:output>
+<wsdl:fault message="tns:NotFoundException" name="NotFoundException"> </wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getDetailsOrder">
+<wsdl:input message="tns:getDetailsOrder" name="getDetailsOrder"> </wsdl:input>
+<wsdl:output message="tns:getDetailsOrderResponse" name="getDetailsOrderResponse"> </wsdl:output>
+<wsdl:fault message="tns:NotFoundException" name="NotFoundException"> </wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="verifyFunctionalEligebility">
+<wsdl:input message="tns:verifyFunctionalEligebility" name="verifyFunctionalEligebility"> </wsdl:input>
+<wsdl:output message="tns:verifyFunctionalEligebilityResponse" name="verifyFunctionalEligebilityResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="adjustBalanceIn">
+<wsdl:input message="tns:adjustBalanceIn" name="adjustBalanceIn"> </wsdl:input>
+<wsdl:output message="tns:adjustBalanceInResponse" name="adjustBalanceInResponse"> </wsdl:output>
+<wsdl:fault message="tns:NotFoundException" name="NotFoundException"> </wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getEligibileContractForMigration">
+<wsdl:input message="tns:getEligibileContractForMigration" name="getEligibileContractForMigration"> </wsdl:input>
+<wsdl:output message="tns:getEligibileContractForMigrationResponse" name="getEligibileContractForMigrationResponse"> </wsdl:output>
+<wsdl:fault message="tns:InvalidInputException" name="InvalidInputException"> </wsdl:fault>
+<wsdl:fault message="tns:NotFoundException" name="NotFoundException"> </wsdl:fault>
+<wsdl:fault message="tns:ParseException" name="ParseException"> </wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="verifyTechnicalEligibility">
+<wsdl:input message="tns:verifyTechnicalEligibility" name="verifyTechnicalEligibility"> </wsdl:input>
+<wsdl:output message="tns:verifyTechnicalEligibilityResponse" name="verifyTechnicalEligibilityResponse"> </wsdl:output>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="APCManagerServiceSoapBinding" type="tns:APCManager">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="contractHasMigration">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="contractHasMigration">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="contractHasMigrationResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="InvalidInputException">
+<soap:fault name="InvalidInputException" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="sendEmailMigration">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="sendEmailMigration">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="sendEmailMigrationResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getContractHistory">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="getContractHistory">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getContractHistoryResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="InvalidInputException">
+<soap:fault name="InvalidInputException" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="adjustBalanceBscs">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="adjustBalanceBscs">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="adjustBalanceBscsResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="NotFoundException">
+<soap:fault name="NotFoundException" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getMigrationOrderParentProcess">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="getMigrationOrderParentProcess">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getMigrationOrderParentProcessResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="InvalidInputException">
+<soap:fault name="InvalidInputException" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="percistMigration">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="percistMigration">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="percistMigrationResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getNBofmigrationexecutedforcontract">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="getNBofmigrationexecutedforcontract">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getNBofmigrationexecutedforcontractResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="InvalidInputException">
+<soap:fault name="InvalidInputException" use="literal"/>
+</wsdl:fault>
+<wsdl:fault name="ParseException">
+<soap:fault name="ParseException" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="updateMigration">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="updateMigration">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="updateMigrationResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="deleteMigration">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="deleteMigration">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="deleteMigrationResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getMigrationOrder">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="getMigrationOrder">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getMigrationOrderResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="InvalidInputException">
+<soap:fault name="InvalidInputException" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getListOrderId">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="getListOrderId">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getListOrderIdResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="InvalidInputException">
+<soap:fault name="InvalidInputException" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getMigrationList">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="getMigrationList">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getMigrationListResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="InvalidInputException">
+<soap:fault name="InvalidInputException" use="literal"/>
+</wsdl:fault>
+<wsdl:fault name="NotFoundException">
+<soap:fault name="NotFoundException" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="updateCoIdMigrationOrder">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="updateCoIdMigrationOrder">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="updateCoIdMigrationOrderResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="InvalidInputException">
+<soap:fault name="InvalidInputException" use="literal"/>
+</wsdl:fault>
+<wsdl:fault name="NotFoundException">
+<soap:fault name="NotFoundException" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="adjustBalanceMigration">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="adjustBalanceMigration">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="adjustBalanceMigrationResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="NotFoundException">
+<soap:fault name="NotFoundException" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getDetailsOrder">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="getDetailsOrder">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getDetailsOrderResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="NotFoundException">
+<soap:fault name="NotFoundException" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="verifyFunctionalEligebility">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="verifyFunctionalEligebility">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="verifyFunctionalEligebilityResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="adjustBalanceIn">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="adjustBalanceIn">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="adjustBalanceInResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="NotFoundException">
+<soap:fault name="NotFoundException" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getEligibileContractForMigration">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="getEligibileContractForMigration">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getEligibileContractForMigrationResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="InvalidInputException">
+<soap:fault name="InvalidInputException" use="literal"/>
+</wsdl:fault>
+<wsdl:fault name="NotFoundException">
+<soap:fault name="NotFoundException" use="literal"/>
+</wsdl:fault>
+<wsdl:fault name="ParseException">
+<soap:fault name="ParseException" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="verifyTechnicalEligibility">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="verifyTechnicalEligibility">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="verifyTechnicalEligibilityResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="APCManagerService">
+<wsdl:port binding="tns:APCManagerServiceSoapBinding" name="APCManagerPort">
+<soap:address location="http://192.168.1.11:9090/PBI_CMS/services/APCManager"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

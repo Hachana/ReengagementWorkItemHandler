@@ -1,0 +1,1949 @@
+<wsdl:definitions xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://alu.services.ws.lhs.com" xmlns:intf="http://alu.services.ws.lhs.com" xmlns:tns1="http://services.contract_services_read.v2.beans.ws.lhs.com" xmlns:tns2="http://cug_memberships.services.contract_services_read.v2.beans.ws.lhs.com" xmlns:tns3="http://contract_service_cug_parameters_read.v2.beans.ws.lhs.com" xmlns:tns4="http://num_params.contract_service_cug_parameters_read.v2.beans.ws.lhs.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://alu.services.ws.lhs.com">
+<!-- WSDL created by Apache Axis version: 1.4
+Built on Apr 09, 2009 (02:08:07 CEST) -->
+<wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://alu.services.ws.lhs.com">
+<import namespace="http://contract_service_cug_parameters_read.v2.beans.ws.lhs.com"/>
+<import namespace="http://num_params.contract_service_cug_parameters_read.v2.beans.ws.lhs.com"/>
+<import namespace="http://services.contract_services_read.v2.beans.ws.lhs.com"/>
+<import namespace="http://cug_memberships.services.contract_services_read.v2.beans.ws.lhs.com"/>
+<complexType name="GetTypeRequest">
+<sequence>
+<element name="rpCode" nillable="true" type="xsd:long"/>
+</sequence>
+</complexType>
+<element name="getTypeRequest" type="impl:GetTypeRequest"/>
+<complexType name="OperationResponse">
+<sequence>
+<element name="bscsErrorCode" nillable="true" type="xsd:string"/>
+<element name="comment" nillable="true" type="xsd:string"/>
+<element name="isSuccessful" nillable="true" type="xsd:boolean"/>
+</sequence>
+</complexType>
+<complexType name="GetTypeResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="type" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getTypeReturn" type="impl:GetTypeResponse"/>
+<complexType name="GetCoIdRequest">
+<sequence>
+<element name="msisdn" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<element name="getContractFromMsisdnRequest" type="impl:GetCoIdRequest"/>
+<complexType name="BaseSOIBean">
+<sequence/>
+</complexType>
+<complexType name="Rateplan">
+<sequence>
+<element name="des" nillable="true" type="xsd:string"/>
+<element name="rpcode" nillable="true" type="xsd:long"/>
+<element name="type" nillable="true" type="xsd:string"/>
+<element name="value" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<complexType name="ContractBean">
+<complexContent>
+<extension base="impl:BaseSOIBean">
+<sequence>
+<element name="coId" nillable="true" type="xsd:long"/>
+<element name="coIdPub" nillable="true" type="xsd:string"/>
+<element name="csId" nillable="true" type="xsd:long"/>
+<element name="csIdPub" nillable="true" type="xsd:string"/>
+<element name="custName" nillable="true" type="xsd:string"/>
+<element name="offer" nillable="true" type="impl:Rateplan"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfContractBean">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:ContractBean"/>
+</sequence>
+</complexType>
+<complexType name="GetContractFromMsisdnResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="contracts" nillable="true" type="impl:ArrayOfContractBean"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getContractFromMsisdnReturn" type="impl:GetContractFromMsisdnResponse"/>
+<complexType name="CoIdRequest">
+<sequence>
+<element name="coId" nillable="true" type="xsd:long"/>
+</sequence>
+</complexType>
+<element name="desactivateContractRequest" type="impl:CoIdRequest"/>
+<element name="desactivateContractReturn" type="impl:OperationResponse"/>
+<complexType name="CalculateAccelerationRequest">
+<sequence>
+<element name="coId" nillable="true" type="xsd:long"/>
+<element name="date" nillable="true" type="xsd:string"/>
+<element name="desTarget" nillable="true" type="xsd:string"/>
+<element name="rpCodeTarget" nillable="true" type="xsd:long"/>
+<element name="valueTarget" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<element name="calculateAccelerationRequest" type="impl:CalculateAccelerationRequest"/>
+<complexType name="CalculateAccelerationResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="actualForfait" nillable="true" type="xsd:double"/>
+<element name="dateFin" nillable="true" type="xsd:string"/>
+<element name="montant" nillable="true" type="xsd:double"/>
+<element name="nbMois" nillable="true" type="xsd:int"/>
+<element name="remise" nillable="true" type="xsd:string"/>
+<element name="targetForfait" nillable="true" type="xsd:double"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="calculateAccelerationReturn" type="impl:CalculateAccelerationResponse"/>
+<complexType name="BalanceHistRequest">
+<sequence>
+<element name="canal" nillable="true" type="xsd:string"/>
+<element name="coId" nillable="true" type="xsd:long"/>
+<element name="orderId" nillable="true" type="xsd:long"/>
+<element name="sncodeBalance" nillable="true" type="xsd:long"/>
+<element name="tmcode" nillable="true" type="xsd:long"/>
+<element name="type" nillable="true" type="xsd:string"/>
+<element name="unit" nillable="true" type="xsd:string"/>
+<element name="value" nillable="true" type="xsd:double"/>
+</sequence>
+</complexType>
+<element name="insertBalanceHistRequest" type="impl:BalanceHistRequest"/>
+<element name="insertBalanceHistReturn" type="impl:OperationResponse"/>
+<complexType name="ApcFafNumberHistRequest">
+<sequence>
+<element name="coId" nillable="true" type="xsd:long"/>
+<element name="numFaf" nillable="true" type="xsd:string"/>
+<element name="numberFaf" nillable="true" type="xsd:long"/>
+<element name="orderId" nillable="true" type="xsd:long"/>
+</sequence>
+</complexType>
+<element name="apcFafNumberHistRequest" type="impl:ApcFafNumberHistRequest"/>
+<element name="insertFafNumberHistReturn" type="impl:OperationResponse"/>
+<complexType name="GetServiceRequest">
+<sequence>
+<element name="des" nillable="true" type="xsd:string"/>
+<element name="prgCode" nillable="true" type="xsd:long"/>
+<element name="rpCode" nillable="true" type="xsd:long"/>
+<element name="value" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<element name="getOptionalServicesRequest" type="impl:GetServiceRequest"/>
+<complexType name="Parameter">
+<complexContent>
+<extension base="impl:BaseSOIBean">
+<sequence>
+<element name="prmDes" nillable="true" type="xsd:string"/>
+<element name="prmId" nillable="true" type="xsd:long"/>
+<element name="prmType" nillable="true" type="xsd:string"/>
+<element name="value" nillable="true" type="xsd:string"/>
+<element name="valueDes" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfParameter">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:Parameter"/>
+</sequence>
+</complexType>
+<complexType name="Service">
+<complexContent>
+<extension base="impl:BaseSOIBean">
+<sequence>
+<element name="des" nillable="true" type="xsd:string"/>
+<element name="param" nillable="true" type="impl:ArrayOfParameter"/>
+<element name="sncode" nillable="true" type="xsd:long"/>
+<element name="spcode" nillable="true" type="xsd:long"/>
+<element name="type" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfService">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:Service"/>
+</sequence>
+</complexType>
+<complexType name="GetOptionalServicesResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="services" nillable="true" type="impl:ArrayOfService"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getOptionalServicesReturn" type="impl:GetOptionalServicesResponse"/>
+<complexType name="GetBalancesRequest">
+<sequence>
+<element name="coId" nillable="true" type="xsd:long"/>
+<element name="des" nillable="true" type="xsd:string"/>
+<element name="dueDate" nillable="true" type="xsd:string"/>
+<element name="rpCode" nillable="true" type="xsd:long"/>
+</sequence>
+</complexType>
+<element name="getBalancesRequest" type="impl:GetBalancesRequest"/>
+<complexType name="Balance">
+<sequence>
+<element name="actualValue" nillable="true" type="xsd:double"/>
+<element name="balanceDescription" nillable="true" type="xsd:string"/>
+<element name="balanceId" nillable="true" type="xsd:int"/>
+<element name="balanceType" nillable="true" type="xsd:string"/>
+<element name="unit" nillable="true" type="xsd:string"/>
+<element name="unitPrice" type="xsd:float"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOfBalance">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:Balance"/>
+</sequence>
+</complexType>
+<complexType name="BalanceResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="balanceResp" nillable="true" type="impl:ArrayOfBalance"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getBalancesContractHistReturn" type="impl:BalanceResponse"/>
+<complexType name="ArrayOf_xsd_long">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:long"/>
+</sequence>
+</complexType>
+<complexType name="GetContractListForCustomerRequest">
+<sequence>
+<element name="csId" type="xsd:long"/>
+<element name="des" nillable="true" type="xsd:string"/>
+<element name="listCoid" nillable="true" type="impl:ArrayOf_xsd_long"/>
+<element name="rpCode" type="xsd:long"/>
+<element name="value" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<element name="getContractListeForCustomerRequest" type="impl:GetContractListForCustomerRequest"/>
+<complexType name="GetContractListForCustomerBean">
+<sequence>
+<element name="coCode" nillable="true" type="xsd:string"/>
+<element name="des" nillable="true" type="xsd:string"/>
+<element name="msisdn" nillable="true" type="xsd:string"/>
+<element name="status" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOfGetContractListForCustomerBean">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:GetContractListForCustomerBean"/>
+</sequence>
+</complexType>
+<complexType name="GetContractListForCustomerResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="contracts" nillable="true" type="impl:ArrayOfGetContractListForCustomerBean"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getContractListForCustomerReturn" type="impl:GetContractListForCustomerResponse"/>
+<complexType name="OperationDateRequest">
+<sequence>
+<element name="activateService" nillable="true" type="impl:ArrayOfService"/>
+<element name="coId" nillable="true" type="xsd:long"/>
+<element name="date" nillable="true" type="xsd:string"/>
+<element name="desctivateService" nillable="true" type="impl:ArrayOf_xsd_long"/>
+</sequence>
+</complexType>
+<element name="updateOperationDateRequest" type="impl:OperationDateRequest"/>
+<complexType name="OperationDateResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="finished" type="xsd:boolean"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="updateOperationDateReturn" type="impl:OperationDateResponse"/>
+<complexType name="ActivateServiceParamter">
+<sequence>
+<element name="coId" nillable="true" type="xsd:long"/>
+<element name="coIdPub" nillable="true" type="xsd:string"/>
+<element name="services" nillable="true" type="impl:ArrayOfService"/>
+</sequence>
+</complexType>
+<element name="activateAndSetParameterServicesRequest" type="impl:ActivateServiceParamter"/>
+<complexType name="ActivateServiceParamterResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="finished" type="xsd:boolean"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="activateAndSetParameterServicesReturn" type="impl:ActivateServiceParamterResponse"/>
+<complexType name="DesactivateServicesRequest">
+<sequence>
+<element name="coId" type="xsd:long"/>
+<element name="snCodes" nillable="true" type="impl:ArrayOf_xsd_long"/>
+</sequence>
+</complexType>
+<element name="desactivateServicesRequest" type="impl:DesactivateServicesRequest"/>
+<complexType name="DesactivateServicesResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="finished" type="xsd:boolean"/>
+<element name="remark" nillable="true" type="xsd:string"/>
+<element name="snCodes" nillable="true" type="impl:ArrayOf_xsd_long"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="desactivateServicesReturn" type="impl:DesactivateServicesResponse"/>
+<complexType name="CustomerRequest">
+<sequence>
+<element name="csId" nillable="true" type="xsd:long"/>
+</sequence>
+</complexType>
+<element name="getMontantFactureRequest" type="impl:CustomerRequest"/>
+<complexType name="MoneyBean">
+<complexContent>
+<extension base="impl:BaseSOIBean">
+<sequence>
+<element name="amount" nillable="true" type="xsd:double"/>
+<element name="currency" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="MontantFactureResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="montant" nillable="true" type="impl:MoneyBean"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getMontantFactureReturn" type="impl:MontantFactureResponse"/>
+<element name="hasPendingrequest" type="impl:CoIdRequest"/>
+<complexType name="HasPendingRequestResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="pended" type="xsd:boolean"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="hasPendingRequestReturn" type="impl:HasPendingRequestResponse"/>
+<element name="getEngagementStatusRequest" type="impl:CoIdRequest"/>
+<complexType name="GetEngagementStatusResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="engaged" nillable="true" type="xsd:boolean"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getEngagementStatusReturn" type="impl:GetEngagementStatusResponse"/>
+<element name="getEligebilityTemplateRequest" type="impl:CoIdRequest"/>
+<complexType name="EligibilityTemplateResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="templateId" nillable="true" type="impl:ArrayOf_xsd_long"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getEligebilityTemplateReturn" type="impl:EligibilityTemplateResponse"/>
+<element name="getCustomerStatisticsRequest" type="impl:CustomerRequest"/>
+<complexType name="GetCustomerStatisticsBean">
+<sequence>
+<element name="coIdList" nillable="true" type="impl:ArrayOf_xsd_long"/>
+<element name="des" nillable="true" type="xsd:string"/>
+<element name="numBer" type="xsd:int"/>
+<element name="rpCode" type="xsd:long"/>
+<element name="type" nillable="true" type="xsd:string"/>
+<element name="value" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOfGetCustomerStatisticsBean">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:GetCustomerStatisticsBean"/>
+</sequence>
+</complexType>
+<complexType name="GetCustomerStatisticsResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="beans" nillable="true" type="impl:ArrayOfGetCustomerStatisticsBean"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getCustomerStatisticsReturn" type="impl:GetCustomerStatisticsResponse"/>
+<complexType name="DifferentServiceTemplateRequest">
+<sequence>
+<element name="coIdCible" nillable="true" type="xsd:long"/>
+<element name="coIdSource" nillable="true" type="xsd:long"/>
+</sequence>
+</complexType>
+<element name="getDifferentsServiceTemplateRequest" type="impl:DifferentServiceTemplateRequest"/>
+<complexType name="DifferentServiceTemplateResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="communServices" nillable="true" type="impl:ArrayOfService"/>
+<element name="incompatibleServices" nillable="true" type="impl:ArrayOfService"/>
+<element name="missingServices" nillable="true" type="impl:ArrayOfService"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getDifferentsServiceTemplateReturn" type="impl:DifferentServiceTemplateResponse"/>
+<element name="getMsisdnFromCoIdRequest" type="impl:CoIdRequest"/>
+<complexType name="GetMsisdnFromCoIdResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="msisdn" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getMsisdnFromCoIdReturn" type="impl:GetMsisdnFromCoIdResponse"/>
+<complexType name="GetCategoryRequest">
+<sequence>
+<element name="rpCodeInit" nillable="true" type="xsd:long"/>
+<element name="rpCodeTarget" nillable="true" type="xsd:long"/>
+</sequence>
+</complexType>
+<element name="getMigrationCategoryRequest" type="impl:GetCategoryRequest"/>
+<complexType name="GetCategoryResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="category" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getMigrationCategoryReturn" type="impl:GetCategoryResponse"/>
+<complexType name="GetMigrationIntervalRequest">
+<sequence/>
+</complexType>
+<element name="getMigrationIntervalRequest" type="impl:GetMigrationIntervalRequest"/>
+<complexType name="GetMigrationIntervalResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="seqNo" nillable="true" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getMigrationIntervalReturn" type="impl:GetMigrationIntervalResponse"/>
+<element name="coIdRequest" type="impl:CoIdRequest"/>
+<element name="activateOnHoldServiceReturn" type="impl:OperationResponse"/>
+<complexType name="GetOffreRequest">
+<sequence>
+<element name="coId" nillable="true" type="xsd:long"/>
+<element name="rpCode" nillable="true" type="xsd:long"/>
+</sequence>
+</complexType>
+<element name="getOffreSourceRequest" type="impl:GetOffreRequest"/>
+<complexType name="GetOffreResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="offerSource" nillable="true" type="impl:Rateplan"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getOffreSourceReturn" type="impl:GetOffreResponse"/>
+<element name="getCUGRequest" type="impl:CoIdRequest"/>
+<complexType name="ArrayOf_tns3_BasicservicegroupassigmentsBeanOut">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="tns2:BasicservicegroupassigmentsBeanOut"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOf_tns2_CugMembershipsBeanOut">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:CugMembershipsBeanOut"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOf_tns5_MultValuesBeanOut">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="tns4:MultValuesBeanOut"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOf_tns4_NumParamsBeanOut">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="tns3:NumParamsBeanOut"/>
+</sequence>
+</complexType>
+<complexType name="CUGBean">
+<sequence>
+<element name="memberShipList" nillable="true" type="impl:ArrayOf_tns2_CugMembershipsBeanOut"/>
+<element name="numParams" nillable="true" type="impl:ArrayOf_tns4_NumParamsBeanOut"/>
+<element name="snCode" nillable="true" type="xsd:long"/>
+<element name="spCode" nillable="true" type="xsd:long"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOfCUGBean">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:CUGBean"/>
+</sequence>
+</complexType>
+<complexType name="GetCUGResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="cug" nillable="true" type="impl:ArrayOfCUGBean"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getCUGReturn" type="impl:GetCUGResponse"/>
+<element name="getNbreMigrationRequest" type="impl:CoIdRequest"/>
+<complexType name="NbreMigrationResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="numBer" nillable="true" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getNbreMigrationReturn" type="impl:NbreMigrationResponse"/>
+<complexType name="ChangeRatePlanRequest">
+<sequence>
+<element name="coId" type="xsd:long"/>
+<element name="rpCode" type="xsd:long"/>
+</sequence>
+</complexType>
+<element name="changeRatePlanRequest" type="impl:ChangeRatePlanRequest"/>
+<complexType name="ChangeRatePlanResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="finished" type="xsd:boolean"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="changeRateplanReturn" type="impl:ChangeRatePlanResponse"/>
+<element name="calculateProrataRequest" type="impl:CoIdRequest"/>
+<complexType name="ProrateResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="calcul" nillable="true" type="xsd:float"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="calculateProrataReturn" type="impl:ProrateResponse"/>
+<complexType name="CheckRateplanRequest">
+<sequence>
+<element name="coId" nillable="true" type="xsd:long"/>
+<element name="des" nillable="true" type="xsd:string"/>
+<element name="rpcode" nillable="true" type="xsd:long"/>
+<element name="templateId" nillable="true" type="xsd:long"/>
+<element name="value" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<element name="checkRateplanRequest" type="impl:CheckRateplanRequest"/>
+<complexType name="CheckRateplanResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="communServices" nillable="true" type="impl:ArrayOfService"/>
+<element name="incompatibleServices" nillable="true" type="impl:ArrayOfService"/>
+<element name="isCompatible" nillable="true" type="xsd:boolean"/>
+<element name="missingServices" nillable="true" type="impl:ArrayOfService"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="checkRateplanReturn" type="impl:CheckRateplanResponse"/>
+<complexType name="DateBean">
+<complexContent>
+<extension base="impl:BaseSOIBean">
+<sequence>
+<element name="date" nillable="true" type="xsd:dateTime"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="OCCRequest">
+<sequence>
+<element name="amount" nillable="true" type="xsd:double"/>
+<element name="coId" nillable="true" type="xsd:long"/>
+<element name="csId" nillable="true" type="xsd:long"/>
+<element name="remark" nillable="true" type="xsd:string"/>
+<element name="rpCode" nillable="true" type="xsd:long"/>
+<element name="snCodePub" nillable="true" type="xsd:string"/>
+<element name="spCodePub" nillable="true" type="xsd:string"/>
+<element name="validFrom" nillable="true" type="impl:DateBean"/>
+</sequence>
+</complexType>
+<element name="setOCCRequest" type="impl:OCCRequest"/>
+<complexType name="OCCResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="finished" type="xsd:boolean"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="setOCCReturn" type="impl:OCCResponse"/>
+<complexType name="AddTicklerRequest">
+<sequence>
+<element name="coId" type="xsd:long"/>
+<element name="des" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<element name="addTicklerRequest" type="impl:AddTicklerRequest"/>
+<complexType name="AddTicklerResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="tickNumber" type="xsd:long"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="addTicklerReturn" type="impl:AddTicklerResponse"/>
+<complexType name="UserHasRightRequest">
+<sequence>
+<element name="role" nillable="true" type="xsd:string"/>
+<element name="userName" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<element name="userHasRightRequest" type="impl:UserHasRightRequest"/>
+<complexType name="UserHasRightResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="granted" type="xsd:boolean"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="userHasRightReturn" type="impl:UserHasRightResponse"/>
+<element name="activateContractRequest" type="impl:CoIdRequest"/>
+<element name="activateContractReturn" type="impl:OperationResponse"/>
+<complexType name="GetMigrationRequest">
+<sequence>
+<element name="desInit" nillable="true" type="xsd:string"/>
+<element name="desTarget" nillable="true" type="xsd:string"/>
+<element name="rpCodeInit" nillable="true" type="xsd:long"/>
+<element name="rpCodeTarget" nillable="true" type="xsd:long"/>
+<element name="valueSource" nillable="true" type="xsd:string"/>
+<element name="valueTarget" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<element name="getMigrationTypeRequest" type="impl:GetMigrationRequest"/>
+<complexType name="GetMigrationTypeResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="type" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getMigrationtypeReturn" type="impl:GetMigrationTypeResponse"/>
+<element name="getEligebilityRequest" type="impl:CoIdRequest"/>
+<complexType name="ArrayOfRateplan">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:Rateplan"/>
+</sequence>
+</complexType>
+<complexType name="GetEligebilityResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="offer" nillable="true" type="impl:ArrayOfRateplan"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getEligebilityReturn" type="impl:GetEligebilityResponse"/>
+<element name="getCatMigrationRequest" type="impl:GetCategoryRequest"/>
+<element name="getCatMigrationReturn" type="impl:GetCategoryResponse"/>
+<complexType name="UserGroupRequest">
+<sequence>
+<element name="userName" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<element name="userGroupRequest" type="impl:UserGroupRequest"/>
+<complexType name="UserGroupResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="userGroup" nillable="true" type="xsd:string"/>
+<element name="userHasGroup" type="xsd:boolean"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="userGroupReturn" type="impl:UserGroupResponse"/>
+<element name="getMigrationPrixRequest" type="impl:GetMigrationRequest"/>
+<complexType name="PrixMigrationResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="prix" nillable="true" type="xsd:float"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getMigrationPrixReturn" type="impl:PrixMigrationResponse"/>
+<complexType name="AddCugRequest">
+<sequence>
+<element name="coId" nillable="true" type="xsd:long"/>
+<element name="cugs" nillable="true" type="impl:ArrayOfCUGBean"/>
+</sequence>
+</complexType>
+<element name="addCugRequest" type="impl:AddCugRequest"/>
+<element name="addCugContractReturn" type="impl:OperationResponse"/>
+<complexType name="ApcCugHistRequest">
+<sequence>
+<element name="coId" nillable="true" type="xsd:long"/>
+<element name="cugBean" nillable="true" type="impl:CUGBean"/>
+</sequence>
+</complexType>
+<element name="apcCugHistRequest" type="impl:ApcCugHistRequest"/>
+<element name="insertApcCugHistReturn" type="impl:OperationResponse"/>
+<complexType name="UpdateAdvChargeRequest">
+<sequence>
+<element name="coIdSrc" nillable="true" type="xsd:long"/>
+<element name="coIdTarget" nillable="true" type="xsd:long"/>
+<element name="dateMig" nillable="true" type="xsd:dateTime"/>
+<element name="rpCodeCible" nillable="true" type="xsd:long"/>
+<element name="rpCodeSrc" nillable="true" type="xsd:long"/>
+</sequence>
+</complexType>
+<element name="updateAdvChargeRequest" type="impl:UpdateAdvChargeRequest"/>
+<element name="updateAdvChargeReturn" type="impl:OperationResponse"/>
+<complexType name="GetListTemplateRequest">
+<sequence>
+<element name="des" nillable="true" type="xsd:string"/>
+<element name="rpCode" nillable="true" type="xsd:long"/>
+<element name="value" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<element name="getListTemplateRequest" type="impl:GetListTemplateRequest"/>
+<complexType name="Template">
+<sequence>
+<element name="description" nillable="true" type="xsd:string"/>
+<element name="rpCode" nillable="true" type="xsd:long"/>
+<element name="templateId" nillable="true" type="xsd:long"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOfTemplate">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:Template"/>
+</sequence>
+</complexType>
+<complexType name="GetListTemplateRequestResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="template" nillable="true" type="impl:ArrayOfTemplate"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getListTemplateReturn" type="impl:GetListTemplateRequestResponse"/>
+<complexType name="GetConfigBalanceRequest">
+<sequence>
+<element name="desCible" nillable="true" type="xsd:string"/>
+<element name="desSource" nillable="true" type="xsd:string"/>
+<element name="rpCodeCible" nillable="true" type="xsd:long"/>
+<element name="rpCodeSource" nillable="true" type="xsd:long"/>
+<element name="valueSource" nillable="true" type="xsd:string"/>
+<element name="valueTarget" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<element name="getconfigBalanceRequest" type="impl:GetConfigBalanceRequest"/>
+<complexType name="GetConfigBalanceResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="balancesCible" nillable="true" type="impl:ArrayOfBalance"/>
+<element name="balancesSource" nillable="true" type="impl:ArrayOfBalance"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getconfigBalanceReturn" type="impl:GetConfigBalanceResponse"/>
+<complexType name="CreateContractRequest">
+<sequence>
+<element name="coId" nillable="true" type="xsd:long"/>
+<element name="cugs" nillable="true" type="impl:ArrayOfCUGBean"/>
+<element name="rpCode" nillable="true" type="xsd:long"/>
+<element name="services" nillable="true" type="impl:ArrayOfService"/>
+</sequence>
+</complexType>
+<element name="createContractRequest" type="impl:CreateContractRequest"/>
+<complexType name="CreateContractResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="coId" nillable="true" type="xsd:long"/>
+<element name="coIdPub" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="createContractReturn" type="impl:CreateContractResponse"/>
+<element name="getDateFactureRequest" type="impl:CustomerRequest"/>
+<complexType name="GetDateFactureResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="date" nillable="true" type="xsd:dateTime"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getDateFactureReturn" type="impl:GetDateFactureResponse"/>
+<element name="UnexpectedErrorFault" type="impl:UnexpectedErrorFault"/>
+<complexType name="UnexpectedErrorFault">
+<sequence>
+<element name="faultcode" type="xsd:string"/>
+<element name="faultstring" type="xsd:string"/>
+</sequence>
+</complexType>
+</schema>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://cug_memberships.services.contract_services_read.v2.beans.ws.lhs.com">
+<import namespace="http://alu.services.ws.lhs.com"/>
+<import namespace="http://contract_service_cug_parameters_read.v2.beans.ws.lhs.com"/>
+<import namespace="http://num_params.contract_service_cug_parameters_read.v2.beans.ws.lhs.com"/>
+<import namespace="http://services.contract_services_read.v2.beans.ws.lhs.com"/>
+<complexType name="BasicservicegroupassigmentsBeanOut">
+<complexContent>
+<extension base="impl:BaseSOIBean">
+<sequence>
+<element name="bsgDes" nillable="true" type="xsd:string"/>
+<element name="bsgId" nillable="true" type="xsd:long"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+</schema>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://services.contract_services_read.v2.beans.ws.lhs.com">
+<import namespace="http://alu.services.ws.lhs.com"/>
+<import namespace="http://contract_service_cug_parameters_read.v2.beans.ws.lhs.com"/>
+<import namespace="http://num_params.contract_service_cug_parameters_read.v2.beans.ws.lhs.com"/>
+<import namespace="http://cug_memberships.services.contract_services_read.v2.beans.ws.lhs.com"/>
+<complexType name="CugMembershipsBeanOut">
+<complexContent>
+<extension base="impl:BaseSOIBean">
+<sequence>
+<element name="basicservicegroupassigments" nillable="true" type="impl:ArrayOf_tns3_BasicservicegroupassigmentsBeanOut"/>
+<element name="cugId" nillable="true" type="xsd:long"/>
+<element name="cugIndex" nillable="true" type="xsd:long"/>
+<element name="cugInterlockCode" nillable="true" type="xsd:string"/>
+<element name="cugName" nillable="true" type="xsd:string"/>
+<element name="cugPendingStatus" nillable="true" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+</schema>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://num_params.contract_service_cug_parameters_read.v2.beans.ws.lhs.com">
+<import namespace="http://alu.services.ws.lhs.com"/>
+<import namespace="http://contract_service_cug_parameters_read.v2.beans.ws.lhs.com"/>
+<import namespace="http://services.contract_services_read.v2.beans.ws.lhs.com"/>
+<import namespace="http://cug_memberships.services.contract_services_read.v2.beans.ws.lhs.com"/>
+<complexType name="MultValuesBeanOut">
+<complexContent>
+<extension base="impl:BaseSOIBean">
+<sequence>
+<element name="value" nillable="true" type="xsd:string"/>
+<element name="valueDes" nillable="true" type="xsd:string"/>
+<element name="valuePub" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+</schema>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://contract_service_cug_parameters_read.v2.beans.ws.lhs.com">
+<import namespace="http://alu.services.ws.lhs.com"/>
+<import namespace="http://num_params.contract_service_cug_parameters_read.v2.beans.ws.lhs.com"/>
+<import namespace="http://services.contract_services_read.v2.beans.ws.lhs.com"/>
+<import namespace="http://cug_memberships.services.contract_services_read.v2.beans.ws.lhs.com"/>
+<complexType name="NumParamsBeanOut">
+<complexContent>
+<extension base="impl:BaseSOIBean">
+<sequence>
+<element name="bsgId" nillable="true" type="xsd:long"/>
+<element name="complexLevel" nillable="true" type="xsd:long"/>
+<element name="complexNo" nillable="true" type="xsd:long"/>
+<element name="cugId" nillable="true" type="xsd:long"/>
+<element name="dataType" nillable="true" type="xsd:string"/>
+<element name="multValues" nillable="true" type="impl:ArrayOf_tns5_MultValuesBeanOut"/>
+<element name="parentNo" nillable="true" type="xsd:long"/>
+<element name="prmDes" nillable="true" type="xsd:string"/>
+<element name="prmId" nillable="true" type="xsd:long"/>
+<element name="prmIdPub" nillable="true" type="xsd:string"/>
+<element name="prmNo" nillable="true" type="xsd:long"/>
+<element name="requestId" nillable="true" type="xsd:long"/>
+<element name="siblingNo" nillable="true" type="xsd:long"/>
+<element name="type" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+</schema>
+</wsdl:types>
+<wsdl:message name="updateOperationDateRequest">
+<wsdl:part element="impl:updateOperationDateRequest" name="updateOperationDateRequest"/>
+</wsdl:message>
+<wsdl:message name="calculateAccelerationResponse">
+<wsdl:part element="impl:calculateAccelerationReturn" name="calculateAccelerationReturn"/>
+</wsdl:message>
+<wsdl:message name="getContractListForCustomerRequest">
+<wsdl:part element="impl:getContractListeForCustomerRequest" name="getContractListeForCustomerRequest"/>
+</wsdl:message>
+<wsdl:message name="getMigrationtypeRequest">
+<wsdl:part element="impl:getMigrationTypeRequest" name="getMigrationTypeRequest"/>
+</wsdl:message>
+<wsdl:message name="getDifferentsServiceTemplateRequest">
+<wsdl:part element="impl:getDifferentsServiceTemplateRequest" name="getDifferentsServiceTemplateRequest"/>
+</wsdl:message>
+<wsdl:message name="getBalancesContractHistResponse">
+<wsdl:part element="impl:getBalancesContractHistReturn" name="getBalancesContractHistReturn"/>
+</wsdl:message>
+<wsdl:message name="getconfigBalanceResponse">
+<wsdl:part element="impl:getconfigBalanceReturn" name="getconfigBalanceReturn"/>
+</wsdl:message>
+<wsdl:message name="UnexpectedError">
+<wsdl:part element="impl:UnexpectedErrorFault" name="UnexpectedError"/>
+</wsdl:message>
+<wsdl:message name="addTicklerRequest">
+<wsdl:part element="impl:addTicklerRequest" name="addTicklerRequest"/>
+</wsdl:message>
+<wsdl:message name="setOCCResponse">
+<wsdl:part element="impl:setOCCReturn" name="setOCCReturn"/>
+</wsdl:message>
+<wsdl:message name="activateContractRequest">
+<wsdl:part element="impl:activateContractRequest" name="activateContractRequest"/>
+</wsdl:message>
+<wsdl:message name="activateAndSetParameterServicesRequest">
+<wsdl:part element="impl:activateAndSetParameterServicesRequest" name="activateAndSetParameterServicesRequest"/>
+</wsdl:message>
+<wsdl:message name="insertBalanceHistRequest">
+<wsdl:part element="impl:insertBalanceHistRequest" name="insertBalanceHistRequest"/>
+</wsdl:message>
+<wsdl:message name="getMsisdnFromCoIdRequest">
+<wsdl:part element="impl:getMsisdnFromCoIdRequest" name="getMsisdnFromCoIdRequest"/>
+</wsdl:message>
+<wsdl:message name="userHasRightResponse">
+<wsdl:part element="impl:userHasRightReturn" name="userHasRightReturn"/>
+</wsdl:message>
+<wsdl:message name="desactivateContractResponse">
+<wsdl:part element="impl:desactivateContractReturn" name="desactivateContractReturn"/>
+</wsdl:message>
+<wsdl:message name="getTypeResponse">
+<wsdl:part element="impl:getTypeReturn" name="getTypeReturn"/>
+</wsdl:message>
+<wsdl:message name="getCatMigrationResponse">
+<wsdl:part element="impl:getCatMigrationReturn" name="getCatMigrationReturn"/>
+</wsdl:message>
+<wsdl:message name="insertBalanceHistResponse">
+<wsdl:part element="impl:insertBalanceHistReturn" name="insertBalanceHistReturn"/>
+</wsdl:message>
+<wsdl:message name="addTicklerResponse">
+<wsdl:part element="impl:addTicklerReturn" name="addTicklerReturn"/>
+</wsdl:message>
+<wsdl:message name="userGroupRequest">
+<wsdl:part element="impl:userGroupRequest" name="userGroupRequest"/>
+</wsdl:message>
+<wsdl:message name="setOCCRequest">
+<wsdl:part element="impl:setOCCRequest" name="setOCCRequest"/>
+</wsdl:message>
+<wsdl:message name="addCugContractResponse">
+<wsdl:part element="impl:addCugContractReturn" name="addCugContractReturn"/>
+</wsdl:message>
+<wsdl:message name="changeRateplanResponse">
+<wsdl:part element="impl:changeRateplanReturn" name="changeRateplanReturn"/>
+</wsdl:message>
+<wsdl:message name="activateContractResponse">
+<wsdl:part element="impl:activateContractReturn" name="activateContractReturn"/>
+</wsdl:message>
+<wsdl:message name="desactivateContractRequest">
+<wsdl:part element="impl:desactivateContractRequest" name="desactivateContractRequest"/>
+</wsdl:message>
+<wsdl:message name="getOptionalServicesResponse">
+<wsdl:part element="impl:getOptionalServicesReturn" name="getOptionalServicesReturn"/>
+</wsdl:message>
+<wsdl:message name="createContractResponse">
+<wsdl:part element="impl:createContractReturn" name="createContractReturn"/>
+</wsdl:message>
+<wsdl:message name="insertFafNumberHistResponse">
+<wsdl:part element="impl:insertFafNumberHistReturn" name="insertFafNumberHistReturn"/>
+</wsdl:message>
+<wsdl:message name="getOffreSourceRequest">
+<wsdl:part element="impl:getOffreSourceRequest" name="getOffreSourceRequest"/>
+</wsdl:message>
+<wsdl:message name="getListTemplateResponse">
+<wsdl:part element="impl:getListTemplateReturn" name="getListTemplateReturn"/>
+</wsdl:message>
+<wsdl:message name="getMigrationCategoryRequest">
+<wsdl:part element="impl:getMigrationCategoryRequest" name="getMigrationCategoryRequest"/>
+</wsdl:message>
+<wsdl:message name="getContractFromMsisdnRequest">
+<wsdl:part element="impl:getContractFromMsisdnRequest" name="getContractFromMsisdnRequest"/>
+</wsdl:message>
+<wsdl:message name="checkRateplanRequest">
+<wsdl:part element="impl:checkRateplanRequest" name="checkRateplanRequest"/>
+</wsdl:message>
+<wsdl:message name="updateAdvChargeResponse">
+<wsdl:part element="impl:updateAdvChargeReturn" name="updateAdvChargeReturn"/>
+</wsdl:message>
+<wsdl:message name="updateAdvChargeRequest">
+<wsdl:part element="impl:updateAdvChargeRequest" name="updateAdvChargeRequest"/>
+</wsdl:message>
+<wsdl:message name="calculateAccelerationRequest">
+<wsdl:part element="impl:calculateAccelerationRequest" name="calculateAccelerationRequest"/>
+</wsdl:message>
+<wsdl:message name="getEligebilityTemplateResponse">
+<wsdl:part element="impl:getEligebilityTemplateReturn" name="getEligebilityTemplateReturn"/>
+</wsdl:message>
+<wsdl:message name="hasPendingRequestRequest">
+<wsdl:part element="impl:hasPendingrequest" name="hasPendingrequest"/>
+</wsdl:message>
+<wsdl:message name="getDateFactureResponse">
+<wsdl:part element="impl:getDateFactureReturn" name="getDateFactureReturn"/>
+</wsdl:message>
+<wsdl:message name="getContractFromMsisdnResponse">
+<wsdl:part element="impl:getContractFromMsisdnReturn" name="getContractFromMsisdnReturn"/>
+</wsdl:message>
+<wsdl:message name="getEngagementStatusRequest">
+<wsdl:part element="impl:getEngagementStatusRequest" name="getEngagementStatusRequest"/>
+</wsdl:message>
+<wsdl:message name="getEngagementStatusResponse">
+<wsdl:part element="impl:getEngagementStatusReturn" name="getEngagementStatusReturn"/>
+</wsdl:message>
+<wsdl:message name="getconfigBalanceRequest">
+<wsdl:part element="impl:getconfigBalanceRequest" name="getconfigBalanceRequest"/>
+</wsdl:message>
+<wsdl:message name="getCustomerStatisticsRequest">
+<wsdl:part element="impl:getCustomerStatisticsRequest" name="getCustomerStatisticsRequest"/>
+</wsdl:message>
+<wsdl:message name="getEligebilityTemplateRequest">
+<wsdl:part element="impl:getEligebilityTemplateRequest" name="getEligebilityTemplateRequest"/>
+</wsdl:message>
+<wsdl:message name="getMsisdnFromCoIdResponse">
+<wsdl:part element="impl:getMsisdnFromCoIdReturn" name="getMsisdnFromCoIdReturn"/>
+</wsdl:message>
+<wsdl:message name="activateOnHoldServiceResponse">
+<wsdl:part element="impl:activateOnHoldServiceReturn" name="activateOnHoldServiceReturn"/>
+</wsdl:message>
+<wsdl:message name="checkRateplanResponse">
+<wsdl:part element="impl:checkRateplanReturn" name="checkRateplanReturn"/>
+</wsdl:message>
+<wsdl:message name="activateOnHoldServiceRequest">
+<wsdl:part element="impl:coIdRequest" name="coIdRequest"/>
+</wsdl:message>
+<wsdl:message name="getMontantFactureResponse">
+<wsdl:part element="impl:getMontantFactureReturn" name="getMontantFactureReturn"/>
+</wsdl:message>
+<wsdl:message name="getMigrationCategoryResponse">
+<wsdl:part element="impl:getMigrationCategoryReturn" name="getMigrationCategoryReturn"/>
+</wsdl:message>
+<wsdl:message name="getListTemplateRequest">
+<wsdl:part element="impl:getListTemplateRequest" name="getListTemplateRequest"/>
+</wsdl:message>
+<wsdl:message name="insertApcCugHistResponse">
+<wsdl:part element="impl:insertApcCugHistReturn" name="insertApcCugHistReturn"/>
+</wsdl:message>
+<wsdl:message name="desactivateServicesResponse">
+<wsdl:part element="impl:desactivateServicesReturn" name="desactivateServicesReturn"/>
+</wsdl:message>
+<wsdl:message name="activateAndSetParameterServicesResponse">
+<wsdl:part element="impl:activateAndSetParameterServicesReturn" name="activateAndSetParameterServicesReturn"/>
+</wsdl:message>
+<wsdl:message name="userGroupResponse">
+<wsdl:part element="impl:userGroupReturn" name="userGroupReturn"/>
+</wsdl:message>
+<wsdl:message name="addCugContractRequest">
+<wsdl:part element="impl:addCugRequest" name="addCugRequest"/>
+</wsdl:message>
+<wsdl:message name="getMigrationPrixResponse">
+<wsdl:part element="impl:getMigrationPrixReturn" name="getMigrationPrixReturn"/>
+</wsdl:message>
+<wsdl:message name="getEligebilityRequest">
+<wsdl:part element="impl:getEligebilityRequest" name="getEligebilityRequest"/>
+</wsdl:message>
+<wsdl:message name="getMigrationIntervalRequest">
+<wsdl:part element="impl:getMigrationIntervalRequest" name="getMigrationIntervalRequest"/>
+</wsdl:message>
+<wsdl:message name="getOptionalServicesRequest">
+<wsdl:part element="impl:getOptionalServicesRequest" name="getOptionalServicesRequest"/>
+</wsdl:message>
+<wsdl:message name="calculateProrataResponse">
+<wsdl:part element="impl:calculateProrataReturn" name="calculateProrataReturn"/>
+</wsdl:message>
+<wsdl:message name="getMigrationPrixRequest">
+<wsdl:part element="impl:getMigrationPrixRequest" name="getMigrationPrixRequest"/>
+</wsdl:message>
+<wsdl:message name="getContractListForCustomerResponse">
+<wsdl:part element="impl:getContractListForCustomerReturn" name="getContractListForCustomerReturn"/>
+</wsdl:message>
+<wsdl:message name="getCatMigrationRequest">
+<wsdl:part element="impl:getCatMigrationRequest" name="getCatMigrationRequest"/>
+</wsdl:message>
+<wsdl:message name="changeRateplanRequest">
+<wsdl:part element="impl:changeRatePlanRequest" name="changeRatePlanRequest"/>
+</wsdl:message>
+<wsdl:message name="desactivateServicesRequest">
+<wsdl:part element="impl:desactivateServicesRequest" name="desactivateServicesRequest"/>
+</wsdl:message>
+<wsdl:message name="getCustomerStatisticsResponse">
+<wsdl:part element="impl:getCustomerStatisticsReturn" name="getCustomerStatisticsReturn"/>
+</wsdl:message>
+<wsdl:message name="getMigrationIntervalResponse">
+<wsdl:part element="impl:getMigrationIntervalReturn" name="getMigrationIntervalReturn"/>
+</wsdl:message>
+<wsdl:message name="getNbreMigrationRequest">
+<wsdl:part element="impl:getNbreMigrationRequest" name="getNbreMigrationRequest"/>
+</wsdl:message>
+<wsdl:message name="userHasRightRequest">
+<wsdl:part element="impl:userHasRightRequest" name="userHasRightRequest"/>
+</wsdl:message>
+<wsdl:message name="getMontantFactureRequest">
+<wsdl:part element="impl:getMontantFactureRequest" name="getMontantFactureRequest"/>
+</wsdl:message>
+<wsdl:message name="getBalancesContractHistRequest">
+<wsdl:part element="impl:getBalancesRequest" name="getBalancesRequest"/>
+</wsdl:message>
+<wsdl:message name="insertApcCugHistRequest">
+<wsdl:part element="impl:apcCugHistRequest" name="apcCugHistRequest"/>
+</wsdl:message>
+<wsdl:message name="getCUGResponse">
+<wsdl:part element="impl:getCUGReturn" name="getCUGReturn"/>
+</wsdl:message>
+<wsdl:message name="getMigrationtypeResponse">
+<wsdl:part element="impl:getMigrationtypeReturn" name="getMigrationtypeReturn"/>
+</wsdl:message>
+<wsdl:message name="getOffreSourceResponse">
+<wsdl:part element="impl:getOffreSourceReturn" name="getOffreSourceReturn"/>
+</wsdl:message>
+<wsdl:message name="insertFafNumberHistRequest">
+<wsdl:part element="impl:apcFafNumberHistRequest" name="apcFafNumberHistRequest"/>
+</wsdl:message>
+<wsdl:message name="updateOperationDateResponse">
+<wsdl:part element="impl:updateOperationDateReturn" name="updateOperationDateReturn"/>
+</wsdl:message>
+<wsdl:message name="getNbreMigrationResponse">
+<wsdl:part element="impl:getNbreMigrationReturn" name="getNbreMigrationReturn"/>
+</wsdl:message>
+<wsdl:message name="createContractRequest">
+<wsdl:part element="impl:createContractRequest" name="createContractRequest"/>
+</wsdl:message>
+<wsdl:message name="calculateProrataRequest">
+<wsdl:part element="impl:calculateProrataRequest" name="calculateProrataRequest"/>
+</wsdl:message>
+<wsdl:message name="getDateFactureRequest">
+<wsdl:part element="impl:getDateFactureRequest" name="getDateFactureRequest"/>
+</wsdl:message>
+<wsdl:message name="hasPendingRequestResponse">
+<wsdl:part element="impl:hasPendingRequestReturn" name="hasPendingRequestReturn"/>
+</wsdl:message>
+<wsdl:message name="getCUGRequest">
+<wsdl:part element="impl:getCUGRequest" name="getCUGRequest"/>
+</wsdl:message>
+<wsdl:message name="getDifferentsServiceTemplateResponse">
+<wsdl:part element="impl:getDifferentsServiceTemplateReturn" name="getDifferentsServiceTemplateReturn"/>
+</wsdl:message>
+<wsdl:message name="getTypeRequest">
+<wsdl:part element="impl:getTypeRequest" name="getTypeRequest"/>
+</wsdl:message>
+<wsdl:message name="getEligebilityResponse">
+<wsdl:part element="impl:getEligebilityReturn" name="getEligebilityReturn"/>
+</wsdl:message>
+<wsdl:portType name="APCHandling">
+<wsdl:operation name="getType" parameterOrder="getTypeRequest">
+<wsdl:input message="impl:getTypeRequest" name="getTypeRequest"/>
+<wsdl:output message="impl:getTypeResponse" name="getTypeResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getContractFromMsisdn" parameterOrder="getContractFromMsisdnRequest">
+<wsdl:input message="impl:getContractFromMsisdnRequest" name="getContractFromMsisdnRequest"/>
+<wsdl:output message="impl:getContractFromMsisdnResponse" name="getContractFromMsisdnResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="desactivateContract" parameterOrder="desactivateContractRequest">
+<wsdl:input message="impl:desactivateContractRequest" name="desactivateContractRequest"/>
+<wsdl:output message="impl:desactivateContractResponse" name="desactivateContractResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="calculateAcceleration" parameterOrder="calculateAccelerationRequest">
+<wsdl:input message="impl:calculateAccelerationRequest" name="calculateAccelerationRequest"/>
+<wsdl:output message="impl:calculateAccelerationResponse" name="calculateAccelerationResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="insertBalanceHist" parameterOrder="insertBalanceHistRequest">
+<wsdl:input message="impl:insertBalanceHistRequest" name="insertBalanceHistRequest"/>
+<wsdl:output message="impl:insertBalanceHistResponse" name="insertBalanceHistResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="insertFafNumberHist" parameterOrder="apcFafNumberHistRequest">
+<wsdl:input message="impl:insertFafNumberHistRequest" name="insertFafNumberHistRequest"/>
+<wsdl:output message="impl:insertFafNumberHistResponse" name="insertFafNumberHistResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getOptionalServices" parameterOrder="getOptionalServicesRequest">
+<wsdl:input message="impl:getOptionalServicesRequest" name="getOptionalServicesRequest"/>
+<wsdl:output message="impl:getOptionalServicesResponse" name="getOptionalServicesResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getBalancesContractHist" parameterOrder="getBalancesRequest">
+<wsdl:input message="impl:getBalancesContractHistRequest" name="getBalancesContractHistRequest"/>
+<wsdl:output message="impl:getBalancesContractHistResponse" name="getBalancesContractHistResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getContractListForCustomer" parameterOrder="getContractListeForCustomerRequest">
+<wsdl:input message="impl:getContractListForCustomerRequest" name="getContractListForCustomerRequest"/>
+<wsdl:output message="impl:getContractListForCustomerResponse" name="getContractListForCustomerResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="updateOperationDate" parameterOrder="updateOperationDateRequest">
+<wsdl:input message="impl:updateOperationDateRequest" name="updateOperationDateRequest"/>
+<wsdl:output message="impl:updateOperationDateResponse" name="updateOperationDateResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="activateAndSetParameterServices" parameterOrder="activateAndSetParameterServicesRequest">
+<wsdl:input message="impl:activateAndSetParameterServicesRequest" name="activateAndSetParameterServicesRequest"/>
+<wsdl:output message="impl:activateAndSetParameterServicesResponse" name="activateAndSetParameterServicesResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="desactivateServices" parameterOrder="desactivateServicesRequest">
+<wsdl:input message="impl:desactivateServicesRequest" name="desactivateServicesRequest"/>
+<wsdl:output message="impl:desactivateServicesResponse" name="desactivateServicesResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getMontantFacture" parameterOrder="getMontantFactureRequest">
+<wsdl:input message="impl:getMontantFactureRequest" name="getMontantFactureRequest"/>
+<wsdl:output message="impl:getMontantFactureResponse" name="getMontantFactureResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="hasPendingRequest" parameterOrder="hasPendingrequest">
+<wsdl:input message="impl:hasPendingRequestRequest" name="hasPendingRequestRequest"/>
+<wsdl:output message="impl:hasPendingRequestResponse" name="hasPendingRequestResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getEngagementStatus" parameterOrder="getEngagementStatusRequest">
+<wsdl:input message="impl:getEngagementStatusRequest" name="getEngagementStatusRequest"/>
+<wsdl:output message="impl:getEngagementStatusResponse" name="getEngagementStatusResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getEligebilityTemplate" parameterOrder="getEligebilityTemplateRequest">
+<wsdl:input message="impl:getEligebilityTemplateRequest" name="getEligebilityTemplateRequest"/>
+<wsdl:output message="impl:getEligebilityTemplateResponse" name="getEligebilityTemplateResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getCustomerStatistics" parameterOrder="getCustomerStatisticsRequest">
+<wsdl:input message="impl:getCustomerStatisticsRequest" name="getCustomerStatisticsRequest"/>
+<wsdl:output message="impl:getCustomerStatisticsResponse" name="getCustomerStatisticsResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getDifferentsServiceTemplate" parameterOrder="getDifferentsServiceTemplateRequest">
+<wsdl:input message="impl:getDifferentsServiceTemplateRequest" name="getDifferentsServiceTemplateRequest"/>
+<wsdl:output message="impl:getDifferentsServiceTemplateResponse" name="getDifferentsServiceTemplateResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getMsisdnFromCoId" parameterOrder="getMsisdnFromCoIdRequest">
+<wsdl:input message="impl:getMsisdnFromCoIdRequest" name="getMsisdnFromCoIdRequest"/>
+<wsdl:output message="impl:getMsisdnFromCoIdResponse" name="getMsisdnFromCoIdResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getMigrationCategory" parameterOrder="getMigrationCategoryRequest">
+<wsdl:input message="impl:getMigrationCategoryRequest" name="getMigrationCategoryRequest"/>
+<wsdl:output message="impl:getMigrationCategoryResponse" name="getMigrationCategoryResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getMigrationInterval" parameterOrder="getMigrationIntervalRequest">
+<wsdl:input message="impl:getMigrationIntervalRequest" name="getMigrationIntervalRequest"/>
+<wsdl:output message="impl:getMigrationIntervalResponse" name="getMigrationIntervalResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="activateOnHoldService" parameterOrder="coIdRequest">
+<wsdl:input message="impl:activateOnHoldServiceRequest" name="activateOnHoldServiceRequest"/>
+<wsdl:output message="impl:activateOnHoldServiceResponse" name="activateOnHoldServiceResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getOffreSource" parameterOrder="getOffreSourceRequest">
+<wsdl:input message="impl:getOffreSourceRequest" name="getOffreSourceRequest"/>
+<wsdl:output message="impl:getOffreSourceResponse" name="getOffreSourceResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getCUG" parameterOrder="getCUGRequest">
+<wsdl:input message="impl:getCUGRequest" name="getCUGRequest"/>
+<wsdl:output message="impl:getCUGResponse" name="getCUGResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getNbreMigration" parameterOrder="getNbreMigrationRequest">
+<wsdl:input message="impl:getNbreMigrationRequest" name="getNbreMigrationRequest"/>
+<wsdl:output message="impl:getNbreMigrationResponse" name="getNbreMigrationResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="changeRateplan" parameterOrder="changeRatePlanRequest">
+<wsdl:input message="impl:changeRateplanRequest" name="changeRateplanRequest"/>
+<wsdl:output message="impl:changeRateplanResponse" name="changeRateplanResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="calculateProrata" parameterOrder="calculateProrataRequest">
+<wsdl:input message="impl:calculateProrataRequest" name="calculateProrataRequest"/>
+<wsdl:output message="impl:calculateProrataResponse" name="calculateProrataResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="checkRateplan" parameterOrder="checkRateplanRequest">
+<wsdl:input message="impl:checkRateplanRequest" name="checkRateplanRequest"/>
+<wsdl:output message="impl:checkRateplanResponse" name="checkRateplanResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="setOCC" parameterOrder="setOCCRequest">
+<wsdl:input message="impl:setOCCRequest" name="setOCCRequest"/>
+<wsdl:output message="impl:setOCCResponse" name="setOCCResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="addTickler" parameterOrder="addTicklerRequest">
+<wsdl:input message="impl:addTicklerRequest" name="addTicklerRequest"/>
+<wsdl:output message="impl:addTicklerResponse" name="addTicklerResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="userHasRight" parameterOrder="userHasRightRequest">
+<wsdl:input message="impl:userHasRightRequest" name="userHasRightRequest"/>
+<wsdl:output message="impl:userHasRightResponse" name="userHasRightResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="activateContract" parameterOrder="activateContractRequest">
+<wsdl:input message="impl:activateContractRequest" name="activateContractRequest"/>
+<wsdl:output message="impl:activateContractResponse" name="activateContractResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getMigrationtype" parameterOrder="getMigrationTypeRequest">
+<wsdl:input message="impl:getMigrationtypeRequest" name="getMigrationtypeRequest"/>
+<wsdl:output message="impl:getMigrationtypeResponse" name="getMigrationtypeResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getEligebility" parameterOrder="getEligebilityRequest">
+<wsdl:input message="impl:getEligebilityRequest" name="getEligebilityRequest"/>
+<wsdl:output message="impl:getEligebilityResponse" name="getEligebilityResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getCatMigration" parameterOrder="getCatMigrationRequest">
+<wsdl:input message="impl:getCatMigrationRequest" name="getCatMigrationRequest"/>
+<wsdl:output message="impl:getCatMigrationResponse" name="getCatMigrationResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="userGroup" parameterOrder="userGroupRequest">
+<wsdl:input message="impl:userGroupRequest" name="userGroupRequest"/>
+<wsdl:output message="impl:userGroupResponse" name="userGroupResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getMigrationPrix" parameterOrder="getMigrationPrixRequest">
+<wsdl:input message="impl:getMigrationPrixRequest" name="getMigrationPrixRequest"/>
+<wsdl:output message="impl:getMigrationPrixResponse" name="getMigrationPrixResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="addCugContract" parameterOrder="addCugRequest">
+<wsdl:input message="impl:addCugContractRequest" name="addCugContractRequest"/>
+<wsdl:output message="impl:addCugContractResponse" name="addCugContractResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="insertApcCugHist" parameterOrder="apcCugHistRequest">
+<wsdl:input message="impl:insertApcCugHistRequest" name="insertApcCugHistRequest"/>
+<wsdl:output message="impl:insertApcCugHistResponse" name="insertApcCugHistResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="updateAdvCharge" parameterOrder="updateAdvChargeRequest">
+<wsdl:input message="impl:updateAdvChargeRequest" name="updateAdvChargeRequest"/>
+<wsdl:output message="impl:updateAdvChargeResponse" name="updateAdvChargeResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getListTemplate" parameterOrder="getListTemplateRequest">
+<wsdl:input message="impl:getListTemplateRequest" name="getListTemplateRequest"/>
+<wsdl:output message="impl:getListTemplateResponse" name="getListTemplateResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getconfigBalance" parameterOrder="getconfigBalanceRequest">
+<wsdl:input message="impl:getconfigBalanceRequest" name="getconfigBalanceRequest"/>
+<wsdl:output message="impl:getconfigBalanceResponse" name="getconfigBalanceResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="createContract" parameterOrder="createContractRequest">
+<wsdl:input message="impl:createContractRequest" name="createContractRequest"/>
+<wsdl:output message="impl:createContractResponse" name="createContractResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getDateFacture" parameterOrder="getDateFactureRequest">
+<wsdl:input message="impl:getDateFactureRequest" name="getDateFactureRequest"/>
+<wsdl:output message="impl:getDateFactureResponse" name="getDateFactureResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="APCHandlingSoapBinding" type="impl:APCHandling">
+<wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="getType">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getTypeRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getTypeResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getContractFromMsisdn">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getContractFromMsisdnRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getContractFromMsisdnResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="desactivateContract">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="desactivateContractRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="desactivateContractResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="calculateAcceleration">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="calculateAccelerationRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="calculateAccelerationResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="insertBalanceHist">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="insertBalanceHistRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="insertBalanceHistResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="insertFafNumberHist">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="insertFafNumberHistRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="insertFafNumberHistResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getOptionalServices">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getOptionalServicesRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getOptionalServicesResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getBalancesContractHist">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getBalancesContractHistRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getBalancesContractHistResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getContractListForCustomer">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getContractListForCustomerRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getContractListForCustomerResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="updateOperationDate">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="updateOperationDateRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="updateOperationDateResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="activateAndSetParameterServices">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="activateAndSetParameterServicesRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="activateAndSetParameterServicesResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="desactivateServices">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="desactivateServicesRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="desactivateServicesResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getMontantFacture">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getMontantFactureRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getMontantFactureResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="hasPendingRequest">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="hasPendingRequestRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="hasPendingRequestResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getEngagementStatus">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getEngagementStatusRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getEngagementStatusResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getEligebilityTemplate">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getEligebilityTemplateRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getEligebilityTemplateResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getCustomerStatistics">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getCustomerStatisticsRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getCustomerStatisticsResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getDifferentsServiceTemplate">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getDifferentsServiceTemplateRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getDifferentsServiceTemplateResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getMsisdnFromCoId">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getMsisdnFromCoIdRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getMsisdnFromCoIdResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getMigrationCategory">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getMigrationCategoryRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getMigrationCategoryResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getMigrationInterval">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getMigrationIntervalRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getMigrationIntervalResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="activateOnHoldService">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="activateOnHoldServiceRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="activateOnHoldServiceResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getOffreSource">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getOffreSourceRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getOffreSourceResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getCUG">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getCUGRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getCUGResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getNbreMigration">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getNbreMigrationRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getNbreMigrationResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="changeRateplan">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="changeRateplanRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="changeRateplanResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="calculateProrata">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="calculateProrataRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="calculateProrataResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="checkRateplan">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="checkRateplanRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="checkRateplanResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="setOCC">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="setOCCRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="setOCCResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="addTickler">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="addTicklerRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="addTicklerResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="userHasRight">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="userHasRightRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="userHasRightResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="activateContract">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="activateContractRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="activateContractResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getMigrationtype">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getMigrationtypeRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getMigrationtypeResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getEligebility">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getEligebilityRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getEligebilityResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getCatMigration">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getCatMigrationRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getCatMigrationResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="userGroup">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="userGroupRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="userGroupResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getMigrationPrix">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getMigrationPrixRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getMigrationPrixResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="addCugContract">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="addCugContractRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="addCugContractResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="insertApcCugHist">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="insertApcCugHistRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="insertApcCugHistResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="updateAdvCharge">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="updateAdvChargeRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="updateAdvChargeResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getListTemplate">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getListTemplateRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getListTemplateResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getconfigBalance">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getconfigBalanceRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getconfigBalanceResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="createContract">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="createContractRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="createContractResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getDateFacture">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getDateFactureRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getDateFactureResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="APCHandlingService">
+<wsdl:port binding="impl:APCHandlingSoapBinding" name="APCHandling">
+<wsdlsoap:address location="http://192.168.1.11:8080/BscsWs/services/APCHandling"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

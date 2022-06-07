@@ -1,0 +1,758 @@
+<wsdl:definitions xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://alu.services.ws.lhs.com" xmlns:intf="http://alu.services.ws.lhs.com" xmlns:tns1="http://connection.cms.alu.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://alu.services.ws.lhs.com">
+<!-- WSDL created by Apache Axis version: 1.4
+Built on Apr 09, 2009 (02:08:07 CEST) -->
+<wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://alu.services.ws.lhs.com">
+<import namespace="http://connection.cms.alu.com"/>
+<complexType name="ArrayOf_xsd_long">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:long"/>
+</sequence>
+</complexType>
+<complexType name="FaFBean">
+<sequence>
+<element name="actionDate" nillable="true" type="xsd:string"/>
+<element name="coId" nillable="true" type="xsd:int"/>
+<element name="csId" nillable="true" type="xsd:int"/>
+<element name="ffCode" nillable="true" type="xsd:int"/>
+<element name="impactedNum" nillable="true" type="impl:ArrayOf_xsd_long"/>
+<element name="indicatorFaF" nillable="true" type="xsd:int"/>
+<element name="operation" nillable="true" type="xsd:string"/>
+<element name="orderId" nillable="true" type="xsd:int"/>
+<element name="remark" nillable="true" type="xsd:string"/>
+<element name="status" nillable="true" type="xsd:int"/>
+<element name="task" nillable="true" type="xsd:string"/>
+<element name="type" nillable="true" type="xsd:string"/>
+<element name="userId" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<complexType name="UpdateFaFRequest">
+<sequence>
+<element name="faf" nillable="true" type="impl:FaFBean"/>
+<element name="fafIndicator" nillable="true" type="xsd:int"/>
+<element name="ffCode" nillable="true" type="xsd:int"/>
+<element name="status" nillable="true" type="xsd:int"/>
+</sequence>
+</complexType>
+<element name="updateFaFHistRequest" type="impl:UpdateFaFRequest"/>
+<complexType name="OperationResponse">
+<sequence>
+<element name="bscsErrorCode" nillable="true" type="xsd:string"/>
+<element name="comment" nillable="true" type="xsd:string"/>
+<element name="isSuccessful" nillable="true" type="xsd:boolean"/>
+</sequence>
+</complexType>
+<element name="updateFaFHistReturn" type="impl:OperationResponse"/>
+<complexType name="RemoveFriendAndFamillyBeanInput">
+<sequence>
+<element name="shortPhoneNumber" nillable="true" type="xsd:string"/>
+<element name="subscriberFriend" nillable="true" type="impl:ArrayOf_xsd_long"/>
+</sequence>
+</complexType>
+<element name="removeFaFPostRequest" type="impl:RemoveFriendAndFamillyBeanInput"/>
+<complexType name="RemoveFriendAndFamillyBeanOutput">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence/>
+</extension>
+</complexContent>
+</complexType>
+<element name="removeFaFPostReturn" type="impl:RemoveFriendAndFamillyBeanOutput"/>
+<complexType name="LimitAddRequest">
+<sequence>
+<element name="fafIndicator" nillable="true" type="xsd:int"/>
+<element name="shortPhoneNumber" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<element name="checkLimitForAddRequest" type="impl:LimitAddRequest"/>
+<complexType name="LimitAddResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="maxAdded" nillable="true" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="checkMaxAddReturn" type="impl:LimitAddResponse"/>
+<complexType name="HistoricRequest">
+<sequence>
+<element name="coId" nillable="true" type="xsd:long"/>
+</sequence>
+</complexType>
+<element name="getHistFaFRequest" type="impl:HistoricRequest"/>
+<complexType name="ArrayOfFaFBean">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:FaFBean"/>
+</sequence>
+</complexType>
+<complexType name="HistoricResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="fafHist" nillable="true" type="impl:ArrayOfFaFBean"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getHistFaFReturn" type="impl:HistoricResponse"/>
+<complexType name="AddFriendAndFamillyBeanInput">
+<sequence>
+<element name="shortPhoneNumber" nillable="true" type="xsd:string"/>
+<element name="subscriberFriend" nillable="true" type="impl:ArrayOf_xsd_long"/>
+</sequence>
+</complexType>
+<element name="addFaFPostRequest" type="impl:AddFriendAndFamillyBeanInput"/>
+<complexType name="AddFriendAndFamillyBeanOutput">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="ffCode" nillable="true" type="xsd:int"/>
+<element name="indicatorFaF" nillable="true" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="addFaFPostReturn" type="impl:AddFriendAndFamillyBeanOutput"/>
+<element name="fault" type="tns1:CMSException"/>
+<complexType name="GetOrderHistRequest">
+<sequence>
+<element name="orderId" nillable="true" type="xsd:int"/>
+</sequence>
+</complexType>
+<element name="getOrderHistRequest" type="impl:GetOrderHistRequest"/>
+<complexType name="GetOrderHistFaFResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="fafBean" nillable="true" type="impl:FaFBean"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getOrderHistReturn" type="impl:GetOrderHistFaFResponse"/>
+<complexType name="CheckEligibleRequest">
+<sequence>
+<element name="shortPhoneNumber" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<element name="checkEligibleRequest" type="impl:CheckEligibleRequest"/>
+<complexType name="EligibleBean">
+<sequence>
+<element name="assignementLevel" nillable="true" type="xsd:string"/>
+<element name="fafIndicator" nillable="true" type="xsd:int"/>
+<element name="name" nillable="true" type="xsd:string"/>
+<element name="percentage" nillable="true" type="xsd:int"/>
+<element name="type" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOfEligibleBean">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:EligibleBean"/>
+</sequence>
+</complexType>
+<complexType name="CheckEligibleResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="beans" nillable="true" type="impl:ArrayOfEligibleBean"/>
+<element name="isEligible" nillable="true" type="xsd:boolean"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="checkEligibleReturn" type="impl:CheckEligibleResponse"/>
+<complexType name="GetFafIndicatorRequest">
+<sequence>
+<element name="coId" nillable="true" type="xsd:long"/>
+<element name="rpCode" nillable="true" type="xsd:long"/>
+</sequence>
+</complexType>
+<element name="getFafIndicatorRequest" type="impl:GetFafIndicatorRequest"/>
+<complexType name="ArrayOf_xsd_int">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:int"/>
+</sequence>
+</complexType>
+<complexType name="GetFafIndicatorResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="fafIndicators" nillable="true" type="impl:ArrayOf_xsd_int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getFafIndicatorReturn" type="impl:GetFafIndicatorResponse"/>
+<complexType name="ReplaceFriendAndFamillyBeanInput">
+<sequence>
+<element name="shortPhoneNumber" nillable="true" type="xsd:string"/>
+<element name="subscriberFriendCurrent" nillable="true" type="xsd:string"/>
+<element name="subscriberFriendNew" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<element name="replaceFaFPostRequest" type="impl:ReplaceFriendAndFamillyBeanInput"/>
+<complexType name="ReplaceFriendAndFamillyBeanOutput">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence/>
+</extension>
+</complexContent>
+</complexType>
+<element name="replaceFaFPostReturn" type="impl:ReplaceFriendAndFamillyBeanOutput"/>
+<complexType name="IsExistFaFIndicatorRequest">
+<sequence>
+<element name="coId" nillable="true" type="xsd:long"/>
+<element name="fafIndicator" nillable="true" type="xsd:int"/>
+</sequence>
+</complexType>
+<element name="isExistFaFIndicatorRequest" type="impl:IsExistFaFIndicatorRequest"/>
+<complexType name="IsExistFaFIndicatorResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="exist" nillable="true" type="xsd:boolean"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="isExistFaFReturn" type="impl:IsExistFaFIndicatorResponse"/>
+<complexType name="InsertFaFRequest">
+<sequence>
+<element name="coId" nillable="true" type="xsd:int"/>
+<element name="csId" nillable="true" type="xsd:int"/>
+<element name="fafInd" nillable="true" type="xsd:int"/>
+<element name="rpCode" nillable="true" type="xsd:long"/>
+</sequence>
+</complexType>
+<element name="insertFaFRequest" type="impl:InsertFaFRequest"/>
+<element name="insertFaFReturn" type="impl:OperationResponse"/>
+<complexType name="NotificationRequest">
+<sequence>
+<element name="message" nillable="true" type="xsd:string"/>
+<element name="reciver" nillable="true" type="xsd:string"/>
+<element name="sender" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<element name="sendNotificationRequest" type="impl:NotificationRequest"/>
+<element name="sendNotificationReturn" type="impl:OperationResponse"/>
+<complexType name="ListFriendAndFamillyBeanInput">
+<sequence>
+<element name="shortPhoneNumber" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<element name="listFaFRequest" type="impl:ListFriendAndFamillyBeanInput"/>
+<complexType name="ListFriendAndFamillyBeanOutput">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="subscriberFriends" nillable="true" type="impl:ArrayOf_xsd_long"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="listFaFReturn" type="impl:ListFriendAndFamillyBeanOutput"/>
+<complexType name="BackendException">
+<sequence/>
+</complexType>
+<element name="fault1" type="impl:BackendException"/>
+<complexType name="AddFaFHistRequest">
+<sequence>
+<element name="faf" nillable="true" type="impl:FaFBean"/>
+</sequence>
+</complexType>
+<element name="percistFaFRequest" type="impl:AddFaFHistRequest"/>
+<element name="percistFaFReturn" type="impl:OperationResponse"/>
+<complexType name="EligibleFaFOffreRequest">
+<sequence>
+<element name="fafIndicator" nillable="true" type="xsd:int"/>
+<element name="shortPhoneNumber" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<element name="isEligibleFaFOffreRequest" type="impl:EligibleFaFOffreRequest"/>
+<complexType name="EligibleFaFOffreResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="eligible" type="xsd:boolean"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="isEligibleFaFOffreReturn" type="impl:EligibleFaFOffreResponse"/>
+<complexType name="PortabiliteIn">
+<sequence>
+<element name="shortPhoneNumber" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<element name="verifyPortabiliteRequest" type="impl:PortabiliteIn"/>
+<complexType name="PortabiliteOut">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="portaOut" type="xsd:boolean"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="verifyPortabiliteReturn" type="impl:PortabiliteOut"/>
+<complexType name="CheckNbreModifRequest">
+<sequence>
+<element name="fafIndicator" nillable="true" type="xsd:int"/>
+<element name="shortPhoneNumber" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<element name="getNbreModifGratuitRequest" type="impl:CheckNbreModifRequest"/>
+<complexType name="CheckNbreModifResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="isAtteint" nillable="true" type="xsd:boolean"/>
+<element name="montantModif" nillable="true" type="xsd:double"/>
+<element name="nbreModif" nillable="true" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="checkNbreModifGratuitReturn" type="impl:CheckNbreModifResponse"/>
+<element name="UnexpectedErrorFault" type="impl:UnexpectedErrorFault"/>
+<complexType name="UnexpectedErrorFault">
+<sequence>
+<element name="faultcode" type="xsd:string"/>
+<element name="faultstring" type="xsd:string"/>
+</sequence>
+</complexType>
+</schema>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://connection.cms.alu.com">
+<import namespace="http://alu.services.ws.lhs.com"/>
+<complexType name="CMSException">
+<sequence>
+<element name="errorCode" nillable="true" type="xsd:string"/>
+<element name="name" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+</schema>
+</wsdl:types>
+<wsdl:message name="CMSException">
+<wsdl:part element="impl:fault" name="fault"/>
+</wsdl:message>
+<wsdl:message name="sendNotificationRequest">
+<wsdl:part element="impl:sendNotificationRequest" name="sendNotificationRequest"/>
+</wsdl:message>
+<wsdl:message name="listFaFRequest">
+<wsdl:part element="impl:listFaFRequest" name="listFaFRequest"/>
+</wsdl:message>
+<wsdl:message name="UnexpectedError">
+<wsdl:part element="impl:UnexpectedErrorFault" name="UnexpectedError"/>
+</wsdl:message>
+<wsdl:message name="insertFaFRequest">
+<wsdl:part element="impl:insertFaFRequest" name="insertFaFRequest"/>
+</wsdl:message>
+<wsdl:message name="insertFaFResponse">
+<wsdl:part element="impl:insertFaFReturn" name="insertFaFReturn"/>
+</wsdl:message>
+<wsdl:message name="checkEligibleResponse">
+<wsdl:part element="impl:checkEligibleReturn" name="checkEligibleReturn"/>
+</wsdl:message>
+<wsdl:message name="BackendException">
+<wsdl:part element="impl:fault1" name="fault1"/>
+</wsdl:message>
+<wsdl:message name="addFaFPostRequest">
+<wsdl:part element="impl:addFaFPostRequest" name="addFaFPostRequest"/>
+</wsdl:message>
+<wsdl:message name="checkNbreModifGratuitRequest">
+<wsdl:part element="impl:getNbreModifGratuitRequest" name="getNbreModifGratuitRequest"/>
+</wsdl:message>
+<wsdl:message name="updateFaFHistRequest">
+<wsdl:part element="impl:updateFaFHistRequest" name="updateFaFHistRequest"/>
+</wsdl:message>
+<wsdl:message name="getOrderHistRequest">
+<wsdl:part element="impl:getOrderHistRequest" name="getOrderHistRequest"/>
+</wsdl:message>
+<wsdl:message name="getHistFaFResponse">
+<wsdl:part element="impl:getHistFaFReturn" name="getHistFaFReturn"/>
+</wsdl:message>
+<wsdl:message name="replaceFaFPostRequest">
+<wsdl:part element="impl:replaceFaFPostRequest" name="replaceFaFPostRequest"/>
+</wsdl:message>
+<wsdl:message name="getHistFaFRequest">
+<wsdl:part element="impl:getHistFaFRequest" name="getHistFaFRequest"/>
+</wsdl:message>
+<wsdl:message name="isExistFaFRequest">
+<wsdl:part element="impl:isExistFaFIndicatorRequest" name="isExistFaFIndicatorRequest"/>
+</wsdl:message>
+<wsdl:message name="sendNotificationResponse">
+<wsdl:part element="impl:sendNotificationReturn" name="sendNotificationReturn"/>
+</wsdl:message>
+<wsdl:message name="removeFaFPostRequest">
+<wsdl:part element="impl:removeFaFPostRequest" name="removeFaFPostRequest"/>
+</wsdl:message>
+<wsdl:message name="removeFaFPostResponse">
+<wsdl:part element="impl:removeFaFPostReturn" name="removeFaFPostReturn"/>
+</wsdl:message>
+<wsdl:message name="checkMaxAddResponse">
+<wsdl:part element="impl:checkMaxAddReturn" name="checkMaxAddReturn"/>
+</wsdl:message>
+<wsdl:message name="addFaFPostResponse">
+<wsdl:part element="impl:addFaFPostReturn" name="addFaFPostReturn"/>
+</wsdl:message>
+<wsdl:message name="checkMaxAddRequest">
+<wsdl:part element="impl:checkLimitForAddRequest" name="checkLimitForAddRequest"/>
+</wsdl:message>
+<wsdl:message name="getFafIndicatorResponse">
+<wsdl:part element="impl:getFafIndicatorReturn" name="getFafIndicatorReturn"/>
+</wsdl:message>
+<wsdl:message name="isEligibleFaFOffreResponse">
+<wsdl:part element="impl:isEligibleFaFOffreReturn" name="isEligibleFaFOffreReturn"/>
+</wsdl:message>
+<wsdl:message name="isExistFaFResponse">
+<wsdl:part element="impl:isExistFaFReturn" name="isExistFaFReturn"/>
+</wsdl:message>
+<wsdl:message name="getFafIndicatorRequest">
+<wsdl:part element="impl:getFafIndicatorRequest" name="getFafIndicatorRequest"/>
+</wsdl:message>
+<wsdl:message name="percistFaFResponse">
+<wsdl:part element="impl:percistFaFReturn" name="percistFaFReturn"/>
+</wsdl:message>
+<wsdl:message name="getOrderHistResponse">
+<wsdl:part element="impl:getOrderHistReturn" name="getOrderHistReturn"/>
+</wsdl:message>
+<wsdl:message name="replaceFaFPostResponse">
+<wsdl:part element="impl:replaceFaFPostReturn" name="replaceFaFPostReturn"/>
+</wsdl:message>
+<wsdl:message name="verifyPortabiliteRequest">
+<wsdl:part element="impl:verifyPortabiliteRequest" name="verifyPortabiliteRequest"/>
+</wsdl:message>
+<wsdl:message name="listFaFResponse">
+<wsdl:part element="impl:listFaFReturn" name="listFaFReturn"/>
+</wsdl:message>
+<wsdl:message name="isEligibleFaFOffreRequest">
+<wsdl:part element="impl:isEligibleFaFOffreRequest" name="isEligibleFaFOffreRequest"/>
+</wsdl:message>
+<wsdl:message name="checkEligibleRequest">
+<wsdl:part element="impl:checkEligibleRequest" name="checkEligibleRequest"/>
+</wsdl:message>
+<wsdl:message name="percistFaFRequest">
+<wsdl:part element="impl:percistFaFRequest" name="percistFaFRequest"/>
+</wsdl:message>
+<wsdl:message name="updateFaFHistResponse">
+<wsdl:part element="impl:updateFaFHistReturn" name="updateFaFHistReturn"/>
+</wsdl:message>
+<wsdl:message name="verifyPortabiliteResponse">
+<wsdl:part element="impl:verifyPortabiliteReturn" name="verifyPortabiliteReturn"/>
+</wsdl:message>
+<wsdl:message name="checkNbreModifGratuitResponse">
+<wsdl:part element="impl:checkNbreModifGratuitReturn" name="checkNbreModifGratuitReturn"/>
+</wsdl:message>
+<wsdl:portType name="FaFHandling">
+<wsdl:operation name="updateFaFHist" parameterOrder="updateFaFHistRequest">
+<wsdl:input message="impl:updateFaFHistRequest" name="updateFaFHistRequest"/>
+<wsdl:output message="impl:updateFaFHistResponse" name="updateFaFHistResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="removeFaFPost" parameterOrder="removeFaFPostRequest">
+<wsdl:input message="impl:removeFaFPostRequest" name="removeFaFPostRequest"/>
+<wsdl:output message="impl:removeFaFPostResponse" name="removeFaFPostResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="checkMaxAdd" parameterOrder="checkLimitForAddRequest">
+<wsdl:input message="impl:checkMaxAddRequest" name="checkMaxAddRequest"/>
+<wsdl:output message="impl:checkMaxAddResponse" name="checkMaxAddResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getHistFaF" parameterOrder="getHistFaFRequest">
+<wsdl:input message="impl:getHistFaFRequest" name="getHistFaFRequest"/>
+<wsdl:output message="impl:getHistFaFResponse" name="getHistFaFResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="addFaFPost" parameterOrder="addFaFPostRequest">
+<wsdl:input message="impl:addFaFPostRequest" name="addFaFPostRequest"/>
+<wsdl:output message="impl:addFaFPostResponse" name="addFaFPostResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+<wsdl:fault message="impl:CMSException" name="CMSException"/>
+</wsdl:operation>
+<wsdl:operation name="getOrderHist" parameterOrder="getOrderHistRequest">
+<wsdl:input message="impl:getOrderHistRequest" name="getOrderHistRequest"/>
+<wsdl:output message="impl:getOrderHistResponse" name="getOrderHistResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="checkEligible" parameterOrder="checkEligibleRequest">
+<wsdl:input message="impl:checkEligibleRequest" name="checkEligibleRequest"/>
+<wsdl:output message="impl:checkEligibleResponse" name="checkEligibleResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getFafIndicator" parameterOrder="getFafIndicatorRequest">
+<wsdl:input message="impl:getFafIndicatorRequest" name="getFafIndicatorRequest"/>
+<wsdl:output message="impl:getFafIndicatorResponse" name="getFafIndicatorResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="replaceFaFPost" parameterOrder="replaceFaFPostRequest">
+<wsdl:input message="impl:replaceFaFPostRequest" name="replaceFaFPostRequest"/>
+<wsdl:output message="impl:replaceFaFPostResponse" name="replaceFaFPostResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="isExistFaF" parameterOrder="isExistFaFIndicatorRequest">
+<wsdl:input message="impl:isExistFaFRequest" name="isExistFaFRequest"/>
+<wsdl:output message="impl:isExistFaFResponse" name="isExistFaFResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="insertFaF" parameterOrder="insertFaFRequest">
+<wsdl:input message="impl:insertFaFRequest" name="insertFaFRequest"/>
+<wsdl:output message="impl:insertFaFResponse" name="insertFaFResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="sendNotification" parameterOrder="sendNotificationRequest">
+<wsdl:input message="impl:sendNotificationRequest" name="sendNotificationRequest"/>
+<wsdl:output message="impl:sendNotificationResponse" name="sendNotificationResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="listFaF" parameterOrder="listFaFRequest">
+<wsdl:input message="impl:listFaFRequest" name="listFaFRequest"/>
+<wsdl:output message="impl:listFaFResponse" name="listFaFResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+<wsdl:fault message="impl:CMSException" name="CMSException"/>
+<wsdl:fault message="impl:BackendException" name="BackendException"/>
+</wsdl:operation>
+<wsdl:operation name="percistFaF" parameterOrder="percistFaFRequest">
+<wsdl:input message="impl:percistFaFRequest" name="percistFaFRequest"/>
+<wsdl:output message="impl:percistFaFResponse" name="percistFaFResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="isEligibleFaFOffre" parameterOrder="isEligibleFaFOffreRequest">
+<wsdl:input message="impl:isEligibleFaFOffreRequest" name="isEligibleFaFOffreRequest"/>
+<wsdl:output message="impl:isEligibleFaFOffreResponse" name="isEligibleFaFOffreResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="verifyPortabilite" parameterOrder="verifyPortabiliteRequest">
+<wsdl:input message="impl:verifyPortabiliteRequest" name="verifyPortabiliteRequest"/>
+<wsdl:output message="impl:verifyPortabiliteResponse" name="verifyPortabiliteResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="checkNbreModifGratuit" parameterOrder="getNbreModifGratuitRequest">
+<wsdl:input message="impl:checkNbreModifGratuitRequest" name="checkNbreModifGratuitRequest"/>
+<wsdl:output message="impl:checkNbreModifGratuitResponse" name="checkNbreModifGratuitResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="FaFHandlingSoapBinding" type="impl:FaFHandling">
+<wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="updateFaFHist">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="updateFaFHistRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="updateFaFHistResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="removeFaFPost">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="removeFaFPostRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="removeFaFPostResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="checkMaxAdd">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="checkMaxAddRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="checkMaxAddResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getHistFaF">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getHistFaFRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getHistFaFResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="addFaFPost">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="addFaFPostRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="addFaFPostResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+<wsdl:fault name="CMSException">
+<wsdlsoap:fault name="CMSException" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getOrderHist">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getOrderHistRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getOrderHistResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="checkEligible">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="checkEligibleRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="checkEligibleResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getFafIndicator">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getFafIndicatorRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getFafIndicatorResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="replaceFaFPost">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="replaceFaFPostRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="replaceFaFPostResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="isExistFaF">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="isExistFaFRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="isExistFaFResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="insertFaF">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="insertFaFRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="insertFaFResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="sendNotification">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="sendNotificationRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="sendNotificationResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="listFaF">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="listFaFRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="listFaFResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+<wsdl:fault name="CMSException">
+<wsdlsoap:fault name="CMSException" use="literal"/>
+</wsdl:fault>
+<wsdl:fault name="BackendException">
+<wsdlsoap:fault name="BackendException" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="percistFaF">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="percistFaFRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="percistFaFResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="isEligibleFaFOffre">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="isEligibleFaFOffreRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="isEligibleFaFOffreResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="verifyPortabilite">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="verifyPortabiliteRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="verifyPortabiliteResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="checkNbreModifGratuit">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="checkNbreModifGratuitRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="checkNbreModifGratuitResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="FaFHandlingService">
+<wsdl:port binding="impl:FaFHandlingSoapBinding" name="FaFHandling">
+<wsdlsoap:address location="http://192.168.1.11:8080/BscsWs/services/FaFHandling"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

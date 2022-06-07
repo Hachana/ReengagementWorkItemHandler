@@ -1,0 +1,187 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ws.reengagement.billcom.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="ReengagementManagerService" targetNamespace="http://ws.reengagement.billcom.com/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws.reengagement.billcom.com/" elementFormDefault="unqualified" targetNamespace="http://ws.reengagement.billcom.com/" version="1.0">
+<xs:element name="getContractDetailsForReengagement" type="tns:getContractDetailsForReengagement"/>
+<xs:element name="getContractDetailsForReengagementResponse" type="tns:getContractDetailsForReengagementResponse"/>
+<xs:element name="percisteReengagement" type="tns:percisteReengagement"/>
+<xs:element name="percisteReengagementResponse" type="tns:percisteReengagementResponse"/>
+<xs:element name="updateReengagement" type="tns:updateReengagement"/>
+<xs:element name="updateReengagementResponse" type="tns:updateReengagementResponse"/>
+<xs:complexType name="getContractDetailsForReengagement">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"/> 
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getContractDetailsForReengagementResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:getContractDetailsResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getContractDetailsResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="beans" nillable="true" type="tns:reengagementBean"/>
+<xs:element minOccurs="0" name="response" type="tns:operationResponseReengagement"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="reengagementBean">
+<xs:sequence>
+<xs:element minOccurs="0" name="CAGNOTTE_DESCRIPTION" type="xs:string"/>
+<xs:element minOccurs="0" name="CAGNOTTE_STATUS" type="xs:int"/>
+<xs:element minOccurs="0" name="COCODE" type="xs:string"/>
+<xs:element minOccurs="0" name="COID" type="xs:string"/>
+<xs:element minOccurs="0" name="CONTRACT_ORDER_ID" type="xs:int"/>
+<xs:element minOccurs="0" name="CONTRACT_STATUS" type="xs:string"/>
+<xs:element minOccurs="0" name="CUSTCODE" type="xs:string"/>
+<xs:element minOccurs="0" name="CUSTID" type="xs:string"/>
+<xs:element minOccurs="0" name="DATE_END" type="xs:string"/>
+<xs:element minOccurs="0" name="DATE_START" type="xs:string"/>
+<xs:element minOccurs="0" name="DFE_DESCRIPTION" type="xs:string"/>
+<xs:element minOccurs="0" name="DFE_STATUS" type="xs:int"/>
+<xs:element minOccurs="0" name="DUEDATE" type="xs:string"/>
+<xs:element name="gpsAmount" type="xs:float"/>
+<xs:element minOccurs="0" name="JBPM_Ref_Rengagement" type="xs:string"/>
+<xs:element minOccurs="0" name="MIGRATION_DESCRIPTION" type="xs:string"/>
+<xs:element minOccurs="0" name="MIGRATION_STATUS" type="xs:int"/>
+<xs:element minOccurs="0" name="MSISDN" type="xs:string"/>
+<xs:element minOccurs="0" name="OFFER_DES" type="xs:string"/>
+<xs:element minOccurs="0" name="OFFER_INIT" type="xs:string"/>
+<xs:element minOccurs="0" name="OFFER_TARGET" type="xs:string"/>
+<xs:element minOccurs="0" name="OLD_COCODE" type="xs:string"/>
+<xs:element minOccurs="0" name="OLD_COID" type="xs:string"/>
+<xs:element minOccurs="0" name="OPTION_DESCRIPTION" type="xs:string"/>
+<xs:element minOccurs="0" name="OPTION_STATUS" type="xs:int"/>
+<xs:element minOccurs="0" name="ORDER_DESCRIPTION" type="xs:string"/>
+<xs:element minOccurs="0" name="ORDER_ID" type="xs:int"/>
+<xs:element minOccurs="0" name="OSMREFERENCE" type="xs:string"/>
+<xs:element minOccurs="0" name="RBF_DESCRIPTION" type="xs:string"/>
+<xs:element minOccurs="0" name="RBF_STATUS" type="xs:int"/>
+<xs:element minOccurs="0" name="reengComment" type="xs:string"/>
+<xs:element minOccurs="0" name="remarque" type="xs:string"/>
+<xs:element minOccurs="0" name="STATUT_ORDER" type="xs:int"/>
+<xs:element minOccurs="0" name="status" type="xs:int"/>
+<xs:element minOccurs="0" name="TMCODE_INIT" type="xs:int"/>
+<xs:element minOccurs="0" name="TMCODE_TARGET" type="xs:int"/>
+<xs:element minOccurs="0" name="task" type="xs:string"/>
+<xs:element minOccurs="0" name="USER_GROUP" type="xs:string"/>
+<xs:element minOccurs="0" name="USER_ID" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="operationResponseReengagement">
+<xs:sequence>
+<xs:element minOccurs="0" name="comment" type="xs:string"/>
+<xs:element minOccurs="0" name="error" type="xs:string"/>
+<xs:element name="succesful" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="percisteReengagement">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="tns:percistReengagementOrderRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="percistReengagementOrderRequest">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="reengagements" nillable="true" type="tns:reengagementBean"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="percisteReengagementResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:percistReengagementOrderResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="percistReengagementOrderResponse">
+<xs:sequence>
+<xs:element name="finished" type="xs:boolean"/>
+<xs:element minOccurs="0" name="response" type="tns:operationResponseReengagement"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateReengagement">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="tns:updateReengagementOrderRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateReengagementOrderRequest">
+<xs:sequence>
+<xs:element minOccurs="0" name="reengagementBean" type="tns:reengagementBean"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateReengagementResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:updateReengagementOrderResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateReengagementOrderResponse">
+<xs:sequence>
+<xs:element name="finished" type="xs:boolean"/>
+<xs:element minOccurs="0" name="response" type="tns:operationResponseReengagement"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="updateReengagementResponse">
+<wsdl:part element="tns:updateReengagementResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="getContractDetailsForReengagement">
+<wsdl:part element="tns:getContractDetailsForReengagement" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="percisteReengagement">
+<wsdl:part element="tns:percisteReengagement" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="updateReengagement">
+<wsdl:part element="tns:updateReengagement" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="getContractDetailsForReengagementResponse">
+<wsdl:part element="tns:getContractDetailsForReengagementResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="percisteReengagementResponse">
+<wsdl:part element="tns:percisteReengagementResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="ReengagementManager">
+<wsdl:operation name="getContractDetailsForReengagement">
+<wsdl:input message="tns:getContractDetailsForReengagement" name="getContractDetailsForReengagement"> </wsdl:input>
+<wsdl:output message="tns:getContractDetailsForReengagementResponse" name="getContractDetailsForReengagementResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="percisteReengagement">
+<wsdl:input message="tns:percisteReengagement" name="percisteReengagement"> </wsdl:input>
+<wsdl:output message="tns:percisteReengagementResponse" name="percisteReengagementResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="updateReengagement">
+<wsdl:input message="tns:updateReengagement" name="updateReengagement"> </wsdl:input>
+<wsdl:output message="tns:updateReengagementResponse" name="updateReengagementResponse"> </wsdl:output>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="ReengagementManagerServiceSoapBinding" type="tns:ReengagementManager">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="getContractDetailsForReengagement">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="getContractDetailsForReengagement">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getContractDetailsForReengagementResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="percisteReengagement">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="percisteReengagement">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="percisteReengagementResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="updateReengagement">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="updateReengagement">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="updateReengagementResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="ReengagementManagerService">
+<wsdl:port binding="tns:ReengagementManagerServiceSoapBinding" name="ReengagementManagerPort">
+<soap:address location="http://192.168.1.11:9090/PBI_CMS/services/ReengagementManager"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

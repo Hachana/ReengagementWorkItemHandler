@@ -1,0 +1,220 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://manager.ws.FaF.billcom.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="FaFManagerService" targetNamespace="http://manager.ws.FaF.billcom.com/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://manager.ws.FaF.billcom.com/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://manager.ws.FaF.billcom.com/">
+<xs:element name="addFaFPre" type="tns:addFaFPre"/>
+<xs:element name="addFaFPreResponse" type="tns:addFaFPreResponse"/>
+<xs:element name="listFaF" type="tns:listFaF"/>
+<xs:element name="listFaFResponse" type="tns:listFaFResponse"/>
+<xs:element name="removeFaFPre" type="tns:removeFaFPre"/>
+<xs:element name="removeFaFPreResponse" type="tns:removeFaFPreResponse"/>
+<xs:element name="replaceFaFPre" type="tns:replaceFaFPre"/>
+<xs:element name="replaceFaFPreResponse" type="tns:replaceFaFPreResponse"/>
+<xs:complexType name="replaceFaFPre">
+<xs:sequence>
+<xs:element minOccurs="0" name="replaceFaFRequest" type="tns:replaceFaFRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="replaceFaFRequest">
+<xs:sequence>
+<xs:element minOccurs="0" name="currentSubscriberFriend" type="xs:long"/>
+<xs:element minOccurs="0" name="indicatorFriendAndFamilly" type="xs:int"/>
+<xs:element minOccurs="0" name="newSubscriberFreind" type="xs:long"/>
+<xs:element minOccurs="0" name="subscriber" type="tns:subscriber"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="subscriber">
+<xs:sequence>
+<xs:element minOccurs="0" name="internationNumberPhone" type="xs:long"/>
+<xs:element minOccurs="0" name="subscriberNumberNAI" type="xs:int"/>
+<xs:element minOccurs="0" name="tmCode" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="replaceFaFPreResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:replaceFaFResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="replaceFaFResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="fafInteger" type="xs:int"/>
+<xs:element minOccurs="0" name="response" type="tns:operationResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="operationResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="comment" type="xs:string"/>
+<xs:element minOccurs="0" name="error" type="xs:string"/>
+<xs:element minOccurs="0" name="isSuccessful" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="removeFaFPre">
+<xs:sequence>
+<xs:element minOccurs="0" name="removeFaFRequest" type="tns:removeFaFRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="removeFaFRequest">
+<xs:sequence>
+<xs:element minOccurs="0" name="indicatorFriendAndFamilly" type="xs:int"/>
+<xs:element minOccurs="0" name="subscriber" type="tns:subscriber"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="subscriberFriend" nillable="true" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="removeFaFPreResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:removeFaFResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="removeFaFResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="fafInteger" type="xs:int"/>
+<xs:element minOccurs="0" name="response" type="tns:operationResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="addFaFPre">
+<xs:sequence>
+<xs:element minOccurs="0" name="addFaFRequest" type="tns:addFaFRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="addFaFRequest">
+<xs:sequence>
+<xs:element minOccurs="0" name="indicatorFriendAndFamilly" type="xs:int"/>
+<xs:element minOccurs="0" name="subscriber" type="tns:subscriber"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="subscriberFriend" nillable="true" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="addFaFPreResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:addFaFResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="addFaFResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="fafInteger" type="xs:int"/>
+<xs:element minOccurs="0" name="response" type="tns:operationResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="listFaF">
+<xs:sequence>
+<xs:element minOccurs="0" name="listFaFRequest" type="tns:listFriendAndFamillyBeanInput"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="listFriendAndFamillyBeanInput">
+<xs:sequence>
+<xs:element minOccurs="0" name="indicatorFriendAndFamilly" type="xs:int"/>
+<xs:element minOccurs="0" name="rpCodePub" type="xs:string"/>
+<xs:element minOccurs="0" name="subscriber" type="tns:subscriber"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="listFaFResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:listFriendAndFamillyBeanOutput"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="listFriendAndFamillyBeanOutput">
+<xs:sequence>
+<xs:element minOccurs="0" name="response" type="tns:operationResponse"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="subscriberFriends" nillable="true" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="replaceFaFPreResponse">
+<wsdl:part element="tns:replaceFaFPreResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="addFaFPreResponse">
+<wsdl:part element="tns:addFaFPreResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="replaceFaFPre">
+<wsdl:part element="tns:replaceFaFPre" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="addFaFPre">
+<wsdl:part element="tns:addFaFPre" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="listFaF">
+<wsdl:part element="tns:listFaF" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="removeFaFPreResponse">
+<wsdl:part element="tns:removeFaFPreResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="listFaFResponse">
+<wsdl:part element="tns:listFaFResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="removeFaFPre">
+<wsdl:part element="tns:removeFaFPre" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="FaFManager">
+<wsdl:operation name="replaceFaFPre">
+<wsdl:input message="tns:replaceFaFPre" name="replaceFaFPre"> </wsdl:input>
+<wsdl:output message="tns:replaceFaFPreResponse" name="replaceFaFPreResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="removeFaFPre">
+<wsdl:input message="tns:removeFaFPre" name="removeFaFPre"> </wsdl:input>
+<wsdl:output message="tns:removeFaFPreResponse" name="removeFaFPreResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="addFaFPre">
+<wsdl:input message="tns:addFaFPre" name="addFaFPre"> </wsdl:input>
+<wsdl:output message="tns:addFaFPreResponse" name="addFaFPreResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="listFaF">
+<wsdl:input message="tns:listFaF" name="listFaF"> </wsdl:input>
+<wsdl:output message="tns:listFaFResponse" name="listFaFResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="FaFManagerServiceSoapBinding" type="tns:FaFManager">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="replaceFaFPre">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="replaceFaFPre">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="replaceFaFPreResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="removeFaFPre">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="removeFaFPre">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="removeFaFPreResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="addFaFPre">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="addFaFPre">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="addFaFPreResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="listFaF">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="listFaF">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="listFaFResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="FaFManagerService">
+<wsdl:port binding="tns:FaFManagerServiceSoapBinding" name="FaFManagerPort">
+<soap:address location="http://192.168.1.11:9090/PBI_CMS/services/FaFManager"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

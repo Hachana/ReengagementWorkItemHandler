@@ -1,0 +1,245 @@
+<wsdl:definitions xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://www.lhsgroup.com/ws_v2" xmlns:intf="http://www.lhsgroup.com/ws_v2" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.lhsgroup.com/ws_v2">
+<!-- WSDL created by Apache Axis version: 1.4
+Built on Apr 09, 2009 (02:08:07 CEST) -->
+<wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.lhsgroup.com/ws_v2">
+<complexType name="BaseSOIBean">
+<sequence/>
+</complexType>
+<complexType name="com.lhs.ws.beans.v2.contract_services_add.services.BsgConfigurationBeanIn">
+<complexContent>
+<extension base="impl:BaseSOIBean">
+<sequence>
+<element name="bsgId" nillable="true" type="xsd:long"/>
+<element name="preferedCugId" nillable="true" type="xsd:long"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfcom.lhs.ws.beans.v2.contract_services_add.services.BsgConfigurationBeanIn">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:com.lhs.ws.beans.v2.contract_services_add.services.BsgConfigurationBeanIn"/>
+</sequence>
+</complexType>
+<complexType name="DateBean">
+<complexContent>
+<extension base="impl:BaseSOIBean">
+<sequence>
+<element name="date" nillable="true" type="xsd:dateTime"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="com.lhs.ws.beans.v2.contract_services_add.services.cug_memberships.BasicservicegroupassigmentsBeanIn">
+<complexContent>
+<extension base="impl:BaseSOIBean">
+<sequence>
+<element name="bsgId" nillable="true" type="xsd:long"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfcom.lhs.ws.beans.v2.contract_services_add.services.cug_memberships.BasicservicegroupassigmentsBeanIn">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:com.lhs.ws.beans.v2.contract_services_add.services.cug_memberships.BasicservicegroupassigmentsBeanIn"/>
+</sequence>
+</complexType>
+<complexType name="com.lhs.ws.beans.v2.contract_services_add.services.CugMembershipsBeanIn">
+<complexContent>
+<extension base="impl:BaseSOIBean">
+<sequence>
+<element name="basicservicegroupassigments" nillable="true" type="impl:ArrayOfcom.lhs.ws.beans.v2.contract_services_add.services.cug_memberships.BasicservicegroupassigmentsBeanIn"/>
+<element name="cugId" nillable="true" type="xsd:long"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfcom.lhs.ws.beans.v2.contract_services_add.services.CugMembershipsBeanIn">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:com.lhs.ws.beans.v2.contract_services_add.services.CugMembershipsBeanIn"/>
+</sequence>
+</complexType>
+<complexType name="com.lhs.ws.beans.v2.contract_services_add.services.DirectoryNumbersBeanIn">
+<complexContent>
+<extension base="impl:BaseSOIBean">
+<sequence>
+<element name="bccode" nillable="true" type="xsd:long"/>
+<element name="dirnumOnBill" nillable="true" type="xsd:boolean"/>
+<element name="dnId" nillable="true" type="xsd:long"/>
+<element name="dnType" nillable="true" type="xsd:long"/>
+<element name="extResourceTypeCode" nillable="true" type="xsd:string"/>
+<element name="hmcode" nillable="true" type="xsd:long"/>
+<element name="hmcodePub" nillable="true" type="xsd:string"/>
+<element name="linkedPublicDnId" nillable="true" type="xsd:long"/>
+<element name="lowerExt" nillable="true" type="xsd:string"/>
+<element name="mainDirnum" nillable="true" type="xsd:boolean"/>
+<element name="npcode" nillable="true" type="xsd:long"/>
+<element name="npcodePub" nillable="true" type="xsd:string"/>
+<element name="upperExt" nillable="true" type="xsd:string"/>
+<element name="vpnId" nillable="true" type="xsd:long"/>
+<element name="vpnIdPub" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfcom.lhs.ws.beans.v2.contract_services_add.services.DirectoryNumbersBeanIn">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:com.lhs.ws.beans.v2.contract_services_add.services.DirectoryNumbersBeanIn"/>
+</sequence>
+</complexType>
+<complexType name="com.lhs.ws.beans.v2.contract_services_add.services.PortsBeanIn">
+<complexContent>
+<extension base="impl:BaseSOIBean">
+<sequence>
+<element name="extResourceTypeCode" nillable="true" type="xsd:string"/>
+<element name="npcode" nillable="true" type="xsd:long"/>
+<element name="npcodePub" nillable="true" type="xsd:string"/>
+<element name="portId" nillable="true" type="xsd:long"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfcom.lhs.ws.beans.v2.contract_services_add.services.PortsBeanIn">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:com.lhs.ws.beans.v2.contract_services_add.services.PortsBeanIn"/>
+</sequence>
+</complexType>
+<complexType name="com.lhs.ws.beans.v2.contract_services_add.ServicesBeanIn">
+<complexContent>
+<extension base="impl:BaseSOIBean">
+<sequence>
+<element name="advanceAccessOvw" nillable="true" type="xsd:double"/>
+<element name="advanceAccessOvwPrd" nillable="true" type="xsd:int"/>
+<element name="advanceAccessOvwType" nillable="true" type="xsd:string"/>
+<element name="bsgConfiguration" nillable="true" type="impl:ArrayOfcom.lhs.ws.beans.v2.contract_services_add.services.BsgConfigurationBeanIn"/>
+<element name="cosAccfeeOvw" nillable="true" type="xsd:double"/>
+<element name="cosAccfeeOvwPrd" nillable="true" type="xsd:int"/>
+<element name="cosAccfeeOvwType" nillable="true" type="xsd:string"/>
+<element name="cosActivationDate" nillable="true" type="impl:DateBean"/>
+<element name="cosQuantity" nillable="true" type="xsd:int"/>
+<element name="cosSubfeeOvw" nillable="true" type="xsd:double"/>
+<element name="cosSubfeeOvwType" nillable="true" type="xsd:string"/>
+<element name="cosTemplId" nillable="true" type="xsd:long"/>
+<element name="cosTrialEndDate" nillable="true" type="impl:DateBean"/>
+<element name="csPaymentConditionUsgInd" nillable="true" type="xsd:int"/>
+<element name="csPrepaidTpId" nillable="true" type="xsd:long"/>
+<element name="csPrepaidTpIdPub" nillable="true" type="xsd:string"/>
+<element name="cugMemberships" nillable="true" type="impl:ArrayOfcom.lhs.ws.beans.v2.contract_services_add.services.CugMembershipsBeanIn"/>
+<element name="directoryNumbers" nillable="true" type="impl:ArrayOfcom.lhs.ws.beans.v2.contract_services_add.services.DirectoryNumbersBeanIn"/>
+<element name="extServiceId" nillable="true" type="xsd:long"/>
+<element name="extServiceIdPub" nillable="true" type="xsd:string"/>
+<element name="ports" nillable="true" type="impl:ArrayOfcom.lhs.ws.beans.v2.contract_services_add.services.PortsBeanIn"/>
+<element name="profileId" nillable="true" type="xsd:long"/>
+<element name="sncode" nillable="true" type="xsd:long"/>
+<element name="sncodePub" nillable="true" type="xsd:string"/>
+<element name="spcode" nillable="true" type="xsd:long"/>
+<element name="spcodePub" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfcom.lhs.ws.beans.v2.contract_services_add.ServicesBeanIn">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:com.lhs.ws.beans.v2.contract_services_add.ServicesBeanIn"/>
+</sequence>
+</complexType>
+<complexType name="ContractServicesAddBeanIn">
+<complexContent>
+<extension base="impl:BaseSOIBean">
+<sequence>
+<element name="coId" nillable="true" type="xsd:long"/>
+<element name="coIdPub" nillable="true" type="xsd:string"/>
+<element name="services" nillable="true" type="impl:ArrayOfcom.lhs.ws.beans.v2.contract_services_add.ServicesBeanIn"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="com.lhs.ws.beans.v2.session_change.ValuesBeanIn">
+<complexContent>
+<extension base="impl:BaseSOIBean">
+<sequence>
+<element name="key" nillable="true" type="xsd:string"/>
+<element name="value" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfcom.lhs.ws.beans.v2.session_change.ValuesBeanIn">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:com.lhs.ws.beans.v2.session_change.ValuesBeanIn"/>
+</sequence>
+</complexType>
+<complexType name="SessionChangeBeanIn">
+<complexContent>
+<extension base="impl:BaseSOIBean">
+<sequence>
+<element name="values" nillable="true" type="impl:ArrayOfcom.lhs.ws.beans.v2.session_change.ValuesBeanIn"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="in0">
+<complexContent>
+<extension base="impl:BaseSOIBean">
+<sequence>
+<element name="input" nillable="true" type="impl:ContractServicesAddBeanIn"/>
+<element name="sessionChange" nillable="true" type="impl:SessionChangeBeanIn"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="in0" type="impl:in0"/>
+<complexType name="ContractServicesAddBeanOut">
+<complexContent>
+<extension base="impl:BaseSOIBean">
+<sequence/>
+</extension>
+</complexContent>
+</complexType>
+<element name="executeReturn" type="impl:ContractServicesAddBeanOut"/>
+<element name="UnexpectedErrorFault" type="impl:UnexpectedErrorFault"/>
+<complexType name="UnexpectedErrorFault">
+<sequence>
+<element name="faultcode" type="xsd:string"/>
+<element name="faultstring" type="xsd:string"/>
+</sequence>
+</complexType>
+</schema>
+</wsdl:types>
+<wsdl:message name="UnexpectedError">
+<wsdl:part element="impl:UnexpectedErrorFault" name="UnexpectedError"/>
+</wsdl:message>
+<wsdl:message name="executeResponse">
+<wsdl:part element="impl:executeReturn" name="executeReturn"/>
+</wsdl:message>
+<wsdl:message name="executeRequest">
+<wsdl:part element="impl:in0" name="in0"/>
+</wsdl:message>
+<wsdl:portType name="ContractServicesAddService">
+<wsdl:operation name="execute" parameterOrder="in0">
+<wsdl:input message="impl:executeRequest" name="executeRequest"/>
+<wsdl:output message="impl:executeResponse" name="executeResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="ContractServicesAddServiceSoapBinding" type="impl:ContractServicesAddService">
+<wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="execute">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="executeRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="executeResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="ContractServicesAddService">
+<wsdl:port binding="impl:ContractServicesAddServiceSoapBinding" name="ContractServicesAddService">
+<wsdlsoap:address location="http://192.168.1.11:8080/BscsWs/services/ContractServicesAdd"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

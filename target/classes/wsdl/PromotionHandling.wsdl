@@ -1,0 +1,338 @@
+<wsdl:definitions xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://alu.services.ws.lhs.com" xmlns:intf="http://alu.services.ws.lhs.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://alu.services.ws.lhs.com">
+<!-- WSDL created by Apache Axis version: 1.4
+Built on Apr 09, 2009 (02:08:07 CEST) -->
+<wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://alu.services.ws.lhs.com">
+<complexType name="getPromoByCategANDMarketRequest">
+<sequence>
+<element name="canalName" nillable="true" type="xsd:string"/>
+<element name="csId" type="xsd:long"/>
+<element name="prgCode" type="xsd:long"/>
+<element name="promoCatId" type="xsd:long"/>
+<element name="scCode" type="xsd:long"/>
+</sequence>
+</complexType>
+<element name="getPromoByCategANDMarketRequest" type="impl:getPromoByCategANDMarketRequest"/>
+<complexType name="OperationResponse">
+<sequence>
+<element name="bscsErrorCode" nillable="true" type="xsd:string"/>
+<element name="comment" nillable="true" type="xsd:string"/>
+<element name="isSuccessful" nillable="true" type="xsd:boolean"/>
+</sequence>
+</complexType>
+<complexType name="getPromoByCategANDMarketResponsePromotionBean">
+<sequence>
+<element name="packDesc" nillable="true" type="xsd:string"/>
+<element name="packId" type="xsd:long"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOfgetPromoByCategANDMarketResponsePromotionBean">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:getPromoByCategANDMarketResponsePromotionBean"/>
+</sequence>
+</complexType>
+<complexType name="getPromoByCategANDMarketResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="promotions" nillable="true" type="impl:ArrayOfgetPromoByCategANDMarketResponsePromotionBean"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getPromoByCategANDMarketReturn" type="impl:getPromoByCategANDMarketResponse"/>
+<complexType name="assignPromoRequest">
+<sequence>
+<element name="assignMode" nillable="true" type="xsd:string"/>
+<element name="canalName" nillable="true" type="xsd:string"/>
+<element name="csId" type="xsd:long"/>
+<element name="packId" type="xsd:long"/>
+<element name="period" type="xsd:int"/>
+<element name="scCode" type="xsd:long"/>
+<element name="userName" nillable="true" type="xsd:string"/>
+<element name="validDate" nillable="true" type="xsd:dateTime"/>
+</sequence>
+</complexType>
+<element name="assignPromoRequest" type="impl:assignPromoRequest"/>
+<complexType name="assignPromoResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="finish" type="xsd:boolean"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="assignPromoReturn" type="impl:assignPromoResponse"/>
+<complexType name="deletePromoRequest">
+<sequence>
+<element name="assignSeqNo" type="xsd:long"/>
+<element name="canalName" nillable="true" type="xsd:string"/>
+<element name="csId" type="xsd:long"/>
+<element name="deleteDate" nillable="true" type="xsd:dateTime"/>
+<element name="packId" type="xsd:long"/>
+<element name="userName" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<element name="deletePromoRequest" type="impl:deletePromoRequest"/>
+<complexType name="deletePromoResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="finish" type="xsd:boolean"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="deletePromoReturn" type="impl:deletePromoResponse"/>
+<complexType name="getCustomerPromoRequest">
+<sequence>
+<element name="csId" type="xsd:long"/>
+</sequence>
+</complexType>
+<element name="getCustomerPromoRequest" type="impl:getCustomerPromoRequest"/>
+<complexType name="PromotionBean">
+<sequence>
+<element name="assignDate" nillable="true" type="xsd:dateTime"/>
+<element name="assignMode" nillable="true" type="xsd:string"/>
+<element name="assignSeqNo" type="xsd:long"/>
+<element name="categDes" nillable="true" type="xsd:string"/>
+<element name="categId" type="xsd:long"/>
+<element name="deleteDate" nillable="true" type="xsd:dateTime"/>
+<element name="market" nillable="true" type="xsd:string"/>
+<element name="packId" type="xsd:long"/>
+<element name="promoDes" nillable="true" type="xsd:string"/>
+<element name="startDate" nillable="true" type="xsd:dateTime"/>
+<element name="status" nillable="true" type="xsd:string"/>
+<element name="user" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOfPromotionBean">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:PromotionBean"/>
+</sequence>
+</complexType>
+<complexType name="getCustomerPromoResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="promotions" nillable="true" type="impl:ArrayOfPromotionBean"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getCustomerPromoReturn" type="impl:getCustomerPromoResponse"/>
+<complexType name="getMarketsRequest">
+<sequence/>
+</complexType>
+<element name="getMarketsRequest" type="impl:getMarketsRequest"/>
+<complexType name="MarketBean">
+<sequence>
+<element name="description" nillable="true" type="xsd:string"/>
+<element name="scCode" type="xsd:long"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOfMarketBean">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:MarketBean"/>
+</sequence>
+</complexType>
+<complexType name="getMarketsResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="markets" nillable="true" type="impl:ArrayOfMarketBean"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getMarketsReturn" type="impl:getMarketsResponse"/>
+<complexType name="getCategoriesRequest">
+<sequence>
+<element name="csId" type="xsd:long"/>
+<element name="scCode" type="xsd:long"/>
+</sequence>
+</complexType>
+<element name="getCategoriesRequest" type="impl:getCategoriesRequest"/>
+<complexType name="CategoryBean">
+<sequence>
+<element name="catDes" nillable="true" type="xsd:string"/>
+<element name="catId" type="xsd:long"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOfCategoryBean">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:CategoryBean"/>
+</sequence>
+</complexType>
+<complexType name="getCategoriesResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="categorys" nillable="true" type="impl:ArrayOfCategoryBean"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getCategoriesReturn" type="impl:getCategoriesResponse"/>
+<element name="UnexpectedErrorFault" type="impl:UnexpectedErrorFault"/>
+<complexType name="UnexpectedErrorFault">
+<sequence>
+<element name="faultcode" type="xsd:string"/>
+<element name="faultstring" type="xsd:string"/>
+</sequence>
+</complexType>
+</schema>
+</wsdl:types>
+<wsdl:message name="deletePromoResponse">
+<wsdl:part element="impl:deletePromoReturn" name="deletePromoReturn"/>
+</wsdl:message>
+<wsdl:message name="getCategoriesResponse">
+<wsdl:part element="impl:getCategoriesReturn" name="getCategoriesReturn"/>
+</wsdl:message>
+<wsdl:message name="getPromoByCategANDMarketRequest">
+<wsdl:part element="impl:getPromoByCategANDMarketRequest" name="getPromoByCategANDMarketRequest"/>
+</wsdl:message>
+<wsdl:message name="UnexpectedError">
+<wsdl:part element="impl:UnexpectedErrorFault" name="UnexpectedError"/>
+</wsdl:message>
+<wsdl:message name="getCustomerPromoRequest">
+<wsdl:part element="impl:getCustomerPromoRequest" name="getCustomerPromoRequest"/>
+</wsdl:message>
+<wsdl:message name="assignPromoRequest">
+<wsdl:part element="impl:assignPromoRequest" name="assignPromoRequest"/>
+</wsdl:message>
+<wsdl:message name="assignPromoResponse">
+<wsdl:part element="impl:assignPromoReturn" name="assignPromoReturn"/>
+</wsdl:message>
+<wsdl:message name="deletePromoRequest">
+<wsdl:part element="impl:deletePromoRequest" name="deletePromoRequest"/>
+</wsdl:message>
+<wsdl:message name="getMarketsRequest">
+<wsdl:part element="impl:getMarketsRequest" name="getMarketsRequest"/>
+</wsdl:message>
+<wsdl:message name="getCategoriesRequest">
+<wsdl:part element="impl:getCategoriesRequest" name="getCategoriesRequest"/>
+</wsdl:message>
+<wsdl:message name="getCustomerPromoResponse">
+<wsdl:part element="impl:getCustomerPromoReturn" name="getCustomerPromoReturn"/>
+</wsdl:message>
+<wsdl:message name="getMarketsResponse">
+<wsdl:part element="impl:getMarketsReturn" name="getMarketsReturn"/>
+</wsdl:message>
+<wsdl:message name="getPromoByCategANDMarketResponse">
+<wsdl:part element="impl:getPromoByCategANDMarketReturn" name="getPromoByCategANDMarketReturn"/>
+</wsdl:message>
+<wsdl:portType name="PromotionHandling">
+<wsdl:operation name="getPromoByCategANDMarket" parameterOrder="getPromoByCategANDMarketRequest">
+<wsdl:input message="impl:getPromoByCategANDMarketRequest" name="getPromoByCategANDMarketRequest"/>
+<wsdl:output message="impl:getPromoByCategANDMarketResponse" name="getPromoByCategANDMarketResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="assignPromo" parameterOrder="assignPromoRequest">
+<wsdl:input message="impl:assignPromoRequest" name="assignPromoRequest"/>
+<wsdl:output message="impl:assignPromoResponse" name="assignPromoResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="deletePromo" parameterOrder="deletePromoRequest">
+<wsdl:input message="impl:deletePromoRequest" name="deletePromoRequest"/>
+<wsdl:output message="impl:deletePromoResponse" name="deletePromoResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getCustomerPromo" parameterOrder="getCustomerPromoRequest">
+<wsdl:input message="impl:getCustomerPromoRequest" name="getCustomerPromoRequest"/>
+<wsdl:output message="impl:getCustomerPromoResponse" name="getCustomerPromoResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getMarkets" parameterOrder="getMarketsRequest">
+<wsdl:input message="impl:getMarketsRequest" name="getMarketsRequest"/>
+<wsdl:output message="impl:getMarketsResponse" name="getMarketsResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getCategories" parameterOrder="getCategoriesRequest">
+<wsdl:input message="impl:getCategoriesRequest" name="getCategoriesRequest"/>
+<wsdl:output message="impl:getCategoriesResponse" name="getCategoriesResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="PromotionHandlingSoapBinding" type="impl:PromotionHandling">
+<wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="getPromoByCategANDMarket">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getPromoByCategANDMarketRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getPromoByCategANDMarketResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="assignPromo">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="assignPromoRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="assignPromoResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="deletePromo">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="deletePromoRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="deletePromoResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getCustomerPromo">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getCustomerPromoRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getCustomerPromoResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getMarkets">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getMarketsRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getMarketsResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getCategories">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getCategoriesRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getCategoriesResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="PromotionHandlingService">
+<wsdl:port binding="impl:PromotionHandlingSoapBinding" name="PromotionHandling">
+<wsdlsoap:address location="http://192.168.1.11:8080/BscsWs/services/PromotionHandling"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

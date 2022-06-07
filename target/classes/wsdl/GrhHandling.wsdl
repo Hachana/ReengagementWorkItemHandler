@@ -1,0 +1,272 @@
+<wsdl:definitions xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://alu.services.ws.lhs.com" xmlns:intf="http://alu.services.ws.lhs.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://alu.services.ws.lhs.com">
+<!-- WSDL created by Apache Axis version: 1.4
+Built on Apr 09, 2009 (02:08:07 CEST) -->
+<wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://alu.services.ws.lhs.com">
+<complexType name="CommitmentPackageElement">
+<sequence>
+<element name="pElementBundledPackAmountGross" nillable="true" type="xsd:double"/>
+<element name="pElementBundledPackAmountNet" nillable="true" type="xsd:double"/>
+<element name="pElementCode" nillable="true" type="xsd:string"/>
+<element name="pElementDes" nillable="true" type="xsd:string"/>
+<element name="pElementId" nillable="true" type="xsd:int"/>
+<element name="pElementQuantity" nillable="true" type="xsd:int"/>
+<element name="pElementSerialNumber" nillable="true" type="xsd:string"/>
+<element name="pElementStandaloneAmountGross" nillable="true" type="xsd:double"/>
+<element name="pElementStandaloneAmountNet" nillable="true" type="xsd:double"/>
+<element name="requestId" nillable="true" type="xsd:long"/>
+<element name="seqNo" nillable="true" type="xsd:int"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOfCommitmentPackageElement">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:CommitmentPackageElement"/>
+</sequence>
+</complexType>
+<complexType name="CommitmentEntityType">
+<sequence>
+<element name="description" nillable="true" type="xsd:string"/>
+<element name="id" nillable="true" type="xsd:int"/>
+</sequence>
+</complexType>
+<complexType name="CommitmentRequest">
+<sequence>
+<element name="commitmentDuration" nillable="true" type="xsd:long"/>
+<element name="commitmentEntityDescription" nillable="true" type="xsd:string"/>
+<element name="commitmentEntityId" nillable="true" type="xsd:long"/>
+<element name="commitmentEntityType" nillable="true" type="impl:CommitmentEntityType"/>
+<element name="commitmentEntityVersion" nillable="true" type="xsd:int"/>
+<element name="commitmentShift" nillable="true" type="xsd:double"/>
+<element name="commitmentShiftUnit" nillable="true" type="xsd:string"/>
+<element name="entryDate" nillable="true" type="xsd:dateTime"/>
+<element name="lastModDate" nillable="true" type="xsd:dateTime"/>
+<element name="packAmountGross" nillable="true" type="xsd:double"/>
+<element name="packAmountNet" nillable="true" type="xsd:double"/>
+<element name="packEndDate_BaselineRule" nillable="true" type="xsd:string"/>
+<element name="packStartDate_BaselineRule" nillable="true" type="xsd:string"/>
+<element name="priority" nillable="true" type="xsd:int"/>
+<element name="renewalDerogationInterval" nillable="true" type="xsd:long"/>
+<element name="requestId" nillable="true" type="xsd:long"/>
+<element name="subventionAmountGross" nillable="true" type="xsd:double"/>
+<element name="subventionAmountNet" nillable="true" type="xsd:double"/>
+<element name="subventionFlag" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<complexType name="OperationType">
+<sequence>
+<element name="description" nillable="true" type="xsd:string"/>
+<element name="id" nillable="true" type="xsd:int"/>
+</sequence>
+</complexType>
+<complexType name="ProcessingMode">
+<sequence>
+<element name="description" nillable="true" type="xsd:string"/>
+<element name="id" nillable="true" type="xsd:int"/>
+</sequence>
+</complexType>
+<complexType name="StatusDefinition">
+<sequence>
+<element name="description" nillable="true" type="xsd:string"/>
+<element name="id" nillable="true" type="xsd:int"/>
+</sequence>
+</complexType>
+<complexType name="RequestAll">
+<sequence>
+<element name="bscsTicklerNumber" nillable="true" type="xsd:int"/>
+<element name="coId" nillable="true" type="xsd:long"/>
+<element name="coNbMonthAdvanceGranted" nillable="true" type="xsd:int"/>
+<element name="coNbMonthAdvancePaid" nillable="true" type="xsd:int"/>
+<element name="coNbMonthTrialExtra" nillable="true" type="xsd:int"/>
+<element name="coNbMonthTrialFree" nillable="true" type="xsd:int"/>
+<element name="coNewTrialEnd_date" nillable="true" type="xsd:dateTime"/>
+<element name="coNewTrialStartDate" nillable="true" type="xsd:dateTime"/>
+<element name="coOldTrialEndDate" nillable="true" type="xsd:dateTime"/>
+<element name="coOldTrialStartDate" nillable="true" type="xsd:dateTime"/>
+<element name="coTmCode" nillable="true" type="xsd:int"/>
+<element name="customerId" nillable="true" type="xsd:long"/>
+<element name="entryDate" nillable="true" type="xsd:dateTime"/>
+<element name="errorCode" nillable="true" type="xsd:long"/>
+<element name="errorMessage" nillable="true" type="xsd:string"/>
+<element name="lastModdate" nillable="true" type="xsd:dateTime"/>
+<element name="operationReferenceDate" nillable="true" type="xsd:dateTime"/>
+<element name="operationType" nillable="true" type="impl:OperationType"/>
+<element name="priority" nillable="true" type="xsd:int"/>
+<element name="processingMode" nillable="true" type="impl:ProcessingMode"/>
+<element name="productBillId" nillable="true" type="xsd:long"/>
+<element name="requestId" nillable="true" type="xsd:long"/>
+<element name="requestPerformDealer" nillable="true" type="xsd:long"/>
+<element name="requestPerformUser" nillable="true" type="xsd:string"/>
+<element name="requestPostDealer" nillable="true" type="xsd:long"/>
+<element name="requestPostUser" nillable="true" type="xsd:string"/>
+<element name="sourceId" nillable="true" type="xsd:long"/>
+<element name="statusDefinition" nillable="true" type="impl:StatusDefinition"/>
+</sequence>
+</complexType>
+<complexType name="GrhRequest">
+<sequence>
+<element name="commitmentPackageElement" nillable="true" type="impl:ArrayOfCommitmentPackageElement"/>
+<element name="commitmentRequest" nillable="true" type="impl:CommitmentRequest"/>
+<element name="requestAll" nillable="true" type="impl:RequestAll"/>
+</sequence>
+</complexType>
+<complexType name="AddGrhRequestRequest">
+<sequence>
+<element name="grhRequest" nillable="true" type="impl:GrhRequest"/>
+</sequence>
+</complexType>
+<element name="addGrhRequestRequest" type="impl:AddGrhRequestRequest"/>
+<complexType name="OperationResponse">
+<sequence>
+<element name="bscsErrorCode" nillable="true" type="xsd:string"/>
+<element name="comment" nillable="true" type="xsd:string"/>
+<element name="isSuccessful" nillable="true" type="xsd:boolean"/>
+</sequence>
+</complexType>
+<complexType name="AddGrhRequestResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="request_id" type="xsd:long"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="addGrhRequestReturn" type="impl:AddGrhRequestResponse"/>
+<complexType name="TakeNewGrhRequestIntoAccountRequest">
+<sequence>
+<element name="requestId" nillable="true" type="xsd:long"/>
+</sequence>
+</complexType>
+<element name="takeNewGrhRequestIntoAccountRequest" type="impl:TakeNewGrhRequestIntoAccountRequest"/>
+<complexType name="TakeNewGrhRequestIntoAccountResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="tickNumber" nillable="true" type="xsd:long"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="takeNewGrhRequestIntoAccountReturn" type="impl:TakeNewGrhRequestIntoAccountResponse"/>
+<complexType name="ContractReference">
+<sequence>
+<element name="coId" nillable="true" type="xsd:long"/>
+<element name="coIdPub" nillable="true" type="xsd:string"/>
+<element name="dirNum" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<complexType name="GetPendingGrhRequestsRequest">
+<sequence>
+<element name="commitmentIndicator" nillable="true" type="xsd:int"/>
+<element name="contractReference" nillable="true" type="impl:ContractReference"/>
+<element name="paymentIndicator" nillable="true" type="xsd:int"/>
+</sequence>
+</complexType>
+<element name="getPendingGrhRequestsRequest" type="impl:GetPendingGrhRequestsRequest"/>
+<complexType name="ArrayOfGrhRequest">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:GrhRequest"/>
+</sequence>
+</complexType>
+<complexType name="GetPendingGrhRequestsResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="pendingGrhRequests" nillable="true" type="impl:ArrayOfGrhRequest"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getPendingGrhRequestsReturn" type="impl:GetPendingGrhRequestsResponse"/>
+<element name="UnexpectedErrorFault" type="impl:UnexpectedErrorFault"/>
+<complexType name="UnexpectedErrorFault">
+<sequence>
+<element name="faultcode" type="xsd:string"/>
+<element name="faultstring" type="xsd:string"/>
+</sequence>
+</complexType>
+</schema>
+</wsdl:types>
+<wsdl:message name="addGrhRequestRequest">
+<wsdl:part element="impl:addGrhRequestRequest" name="addGrhRequestRequest"/>
+</wsdl:message>
+<wsdl:message name="takeNewGrhRequestIntoAccountResponse">
+<wsdl:part element="impl:takeNewGrhRequestIntoAccountReturn" name="takeNewGrhRequestIntoAccountReturn"/>
+</wsdl:message>
+<wsdl:message name="UnexpectedError">
+<wsdl:part element="impl:UnexpectedErrorFault" name="UnexpectedError"/>
+</wsdl:message>
+<wsdl:message name="addGrhRequestResponse">
+<wsdl:part element="impl:addGrhRequestReturn" name="addGrhRequestReturn"/>
+</wsdl:message>
+<wsdl:message name="getPendingGrhRequestsRequest">
+<wsdl:part element="impl:getPendingGrhRequestsRequest" name="getPendingGrhRequestsRequest"/>
+</wsdl:message>
+<wsdl:message name="takeNewGrhRequestIntoAccountRequest">
+<wsdl:part element="impl:takeNewGrhRequestIntoAccountRequest" name="takeNewGrhRequestIntoAccountRequest"/>
+</wsdl:message>
+<wsdl:message name="getPendingGrhRequestsResponse">
+<wsdl:part element="impl:getPendingGrhRequestsReturn" name="getPendingGrhRequestsReturn"/>
+</wsdl:message>
+<wsdl:portType name="GrhHandling">
+<wsdl:operation name="addGrhRequest" parameterOrder="addGrhRequestRequest">
+<wsdl:input message="impl:addGrhRequestRequest" name="addGrhRequestRequest"/>
+<wsdl:output message="impl:addGrhRequestResponse" name="addGrhRequestResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="takeNewGrhRequestIntoAccount" parameterOrder="takeNewGrhRequestIntoAccountRequest">
+<wsdl:input message="impl:takeNewGrhRequestIntoAccountRequest" name="takeNewGrhRequestIntoAccountRequest"/>
+<wsdl:output message="impl:takeNewGrhRequestIntoAccountResponse" name="takeNewGrhRequestIntoAccountResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getPendingGrhRequests" parameterOrder="getPendingGrhRequestsRequest">
+<wsdl:input message="impl:getPendingGrhRequestsRequest" name="getPendingGrhRequestsRequest"/>
+<wsdl:output message="impl:getPendingGrhRequestsResponse" name="getPendingGrhRequestsResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="GrhHandlingSoapBinding" type="impl:GrhHandling">
+<wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="addGrhRequest">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="addGrhRequestRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="addGrhRequestResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="takeNewGrhRequestIntoAccount">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="takeNewGrhRequestIntoAccountRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="takeNewGrhRequestIntoAccountResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getPendingGrhRequests">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getPendingGrhRequestsRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getPendingGrhRequestsResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="GrhHandlingService">
+<wsdl:port binding="impl:GrhHandlingSoapBinding" name="GrhHandling">
+<wsdlsoap:address location="http://192.168.1.11:8080/BscsWs/services/GrhHandling"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

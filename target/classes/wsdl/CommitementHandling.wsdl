@@ -1,0 +1,328 @@
+<wsdl:definitions xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://alu.services.ws.lhs.com" xmlns:intf="http://alu.services.ws.lhs.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://alu.services.ws.lhs.com">
+<!-- WSDL created by Apache Axis version: 1.4
+Built on Apr 09, 2009 (02:08:07 CEST) -->
+<wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://alu.services.ws.lhs.com">
+<complexType name="ContractReference">
+<sequence>
+<element name="coId" nillable="true" type="xsd:long"/>
+<element name="coIdPub" nillable="true" type="xsd:string"/>
+<element name="dirNum" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<complexType name="GetCommitmentHistoryRequest">
+<sequence>
+<element name="contractReference" nillable="true" type="impl:ContractReference"/>
+<element name="endDate" nillable="true" type="xsd:dateTime"/>
+<element name="latestOccurenceFlag" nillable="true" type="xsd:boolean"/>
+<element name="startDate" nillable="true" type="xsd:dateTime"/>
+</sequence>
+</complexType>
+<element name="getCommitmentHistoryRequest" type="impl:GetCommitmentHistoryRequest"/>
+<complexType name="OperationResponse">
+<sequence>
+<element name="bscsErrorCode" nillable="true" type="xsd:string"/>
+<element name="comment" nillable="true" type="xsd:string"/>
+<element name="isSuccessful" nillable="true" type="xsd:boolean"/>
+</sequence>
+</complexType>
+<complexType name="CommitmentService">
+<sequence>
+<element name="commitmentDuration" nillable="true" type="xsd:long"/>
+<element name="commitmentEndDate" nillable="true" type="xsd:dateTime"/>
+<element name="commitmentRequestId" nillable="true" type="xsd:long"/>
+<element name="commitmentStartDate" nillable="true" type="xsd:dateTime"/>
+<element name="commitmentType" nillable="true" type="xsd:string"/>
+<element name="contractId" nillable="true" type="xsd:long"/>
+</sequence>
+</complexType>
+<complexType name="CommitmentPackageElement">
+<sequence>
+<element name="pElementBundledPackAmountGross" nillable="true" type="xsd:double"/>
+<element name="pElementBundledPackAmountNet" nillable="true" type="xsd:double"/>
+<element name="pElementCode" nillable="true" type="xsd:string"/>
+<element name="pElementDes" nillable="true" type="xsd:string"/>
+<element name="pElementId" nillable="true" type="xsd:int"/>
+<element name="pElementQuantity" nillable="true" type="xsd:int"/>
+<element name="pElementSerialNumber" nillable="true" type="xsd:string"/>
+<element name="pElementStandaloneAmountGross" nillable="true" type="xsd:double"/>
+<element name="pElementStandaloneAmountNet" nillable="true" type="xsd:double"/>
+<element name="requestId" nillable="true" type="xsd:long"/>
+<element name="seqNo" nillable="true" type="xsd:int"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOfCommitmentPackageElement">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:CommitmentPackageElement"/>
+</sequence>
+</complexType>
+<complexType name="CommitmentEntityType">
+<sequence>
+<element name="description" nillable="true" type="xsd:string"/>
+<element name="id" nillable="true" type="xsd:int"/>
+</sequence>
+</complexType>
+<complexType name="CommitmentRequest">
+<sequence>
+<element name="commitmentDuration" nillable="true" type="xsd:long"/>
+<element name="commitmentEntityDescription" nillable="true" type="xsd:string"/>
+<element name="commitmentEntityId" nillable="true" type="xsd:long"/>
+<element name="commitmentEntityType" nillable="true" type="impl:CommitmentEntityType"/>
+<element name="commitmentEntityVersion" nillable="true" type="xsd:int"/>
+<element name="commitmentShift" nillable="true" type="xsd:double"/>
+<element name="commitmentShiftUnit" nillable="true" type="xsd:string"/>
+<element name="entryDate" nillable="true" type="xsd:dateTime"/>
+<element name="lastModDate" nillable="true" type="xsd:dateTime"/>
+<element name="packAmountGross" nillable="true" type="xsd:double"/>
+<element name="packAmountNet" nillable="true" type="xsd:double"/>
+<element name="packEndDate_BaselineRule" nillable="true" type="xsd:string"/>
+<element name="packStartDate_BaselineRule" nillable="true" type="xsd:string"/>
+<element name="priority" nillable="true" type="xsd:int"/>
+<element name="renewalDerogationInterval" nillable="true" type="xsd:long"/>
+<element name="requestId" nillable="true" type="xsd:long"/>
+<element name="subventionAmountGross" nillable="true" type="xsd:double"/>
+<element name="subventionAmountNet" nillable="true" type="xsd:double"/>
+<element name="subventionFlag" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<complexType name="OperationType">
+<sequence>
+<element name="description" nillable="true" type="xsd:string"/>
+<element name="id" nillable="true" type="xsd:int"/>
+</sequence>
+</complexType>
+<complexType name="ProcessingMode">
+<sequence>
+<element name="description" nillable="true" type="xsd:string"/>
+<element name="id" nillable="true" type="xsd:int"/>
+</sequence>
+</complexType>
+<complexType name="StatusDefinition">
+<sequence>
+<element name="description" nillable="true" type="xsd:string"/>
+<element name="id" nillable="true" type="xsd:int"/>
+</sequence>
+</complexType>
+<complexType name="RequestAll">
+<sequence>
+<element name="bscsTicklerNumber" nillable="true" type="xsd:int"/>
+<element name="coId" nillable="true" type="xsd:long"/>
+<element name="coNbMonthAdvanceGranted" nillable="true" type="xsd:int"/>
+<element name="coNbMonthAdvancePaid" nillable="true" type="xsd:int"/>
+<element name="coNbMonthTrialExtra" nillable="true" type="xsd:int"/>
+<element name="coNbMonthTrialFree" nillable="true" type="xsd:int"/>
+<element name="coNewTrialEnd_date" nillable="true" type="xsd:dateTime"/>
+<element name="coNewTrialStartDate" nillable="true" type="xsd:dateTime"/>
+<element name="coOldTrialEndDate" nillable="true" type="xsd:dateTime"/>
+<element name="coOldTrialStartDate" nillable="true" type="xsd:dateTime"/>
+<element name="coTmCode" nillable="true" type="xsd:int"/>
+<element name="customerId" nillable="true" type="xsd:long"/>
+<element name="entryDate" nillable="true" type="xsd:dateTime"/>
+<element name="errorCode" nillable="true" type="xsd:long"/>
+<element name="errorMessage" nillable="true" type="xsd:string"/>
+<element name="lastModdate" nillable="true" type="xsd:dateTime"/>
+<element name="operationReferenceDate" nillable="true" type="xsd:dateTime"/>
+<element name="operationType" nillable="true" type="impl:OperationType"/>
+<element name="priority" nillable="true" type="xsd:int"/>
+<element name="processingMode" nillable="true" type="impl:ProcessingMode"/>
+<element name="productBillId" nillable="true" type="xsd:long"/>
+<element name="requestId" nillable="true" type="xsd:long"/>
+<element name="requestPerformDealer" nillable="true" type="xsd:long"/>
+<element name="requestPerformUser" nillable="true" type="xsd:string"/>
+<element name="requestPostDealer" nillable="true" type="xsd:long"/>
+<element name="requestPostUser" nillable="true" type="xsd:string"/>
+<element name="sourceId" nillable="true" type="xsd:long"/>
+<element name="statusDefinition" nillable="true" type="impl:StatusDefinition"/>
+</sequence>
+</complexType>
+<complexType name="GrhRequest">
+<sequence>
+<element name="commitmentPackageElement" nillable="true" type="impl:ArrayOfCommitmentPackageElement"/>
+<element name="commitmentRequest" nillable="true" type="impl:CommitmentRequest"/>
+<element name="requestAll" nillable="true" type="impl:RequestAll"/>
+</sequence>
+</complexType>
+<complexType name="FullCommitmentService">
+<sequence>
+<element name="commitmentService" nillable="true" type="impl:CommitmentService"/>
+<element name="grhRequest" nillable="true" type="impl:GrhRequest"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOfFullCommitmentService">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:FullCommitmentService"/>
+</sequence>
+</complexType>
+<complexType name="GetCommitmentHistoryResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="fullCommitmentServices" nillable="true" type="impl:ArrayOfFullCommitmentService"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getCommitmentHistoryReturn" type="impl:GetCommitmentHistoryResponse"/>
+<complexType name="CommitmentPackage">
+<sequence>
+<element name="catalogId" type="xsd:int"/>
+<element name="commitmentPackageEndDateBaselineRule" nillable="true" type="xsd:string"/>
+<element name="commitmentPackageId" type="xsd:long"/>
+<element name="commitmentPackagePriority" type="xsd:int"/>
+<element name="commitmentPackageRenewalDerogation" type="xsd:int"/>
+<element name="commitmentPackageStartDateBaselineRule" nillable="true" type="xsd:string"/>
+<element name="commitmentPackageSubventionAmount" type="xsd:double"/>
+<element name="commitmentPackageSubventionFlag" nillable="true" type="xsd:string"/>
+<element name="commitmentPackageType" type="xsd:int"/>
+<element name="commitmentPackageValidFromDate" nillable="true" type="xsd:dateTime"/>
+<element name="commitmentPackageValidToDate" nillable="true" type="xsd:dateTime"/>
+<element name="commitmentPackageValue" type="xsd:int"/>
+<element name="commitmentPackageVersion" type="xsd:int"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOfContractReference">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:ContractReference"/>
+</sequence>
+</complexType>
+<complexType name="IsEligibleToNewPackageRequest">
+<sequence>
+<element name="commitmentPackage" nillable="true" type="impl:CommitmentPackage"/>
+<element name="contractReferences" nillable="true" type="impl:ArrayOfContractReference"/>
+</sequence>
+</complexType>
+<element name="isEligibleToNewPackageRequest" type="impl:IsEligibleToNewPackageRequest"/>
+<complexType name="ContractEligibilityDetail">
+<sequence>
+<element name="contractEligibilityStatus" nillable="true" type="xsd:string"/>
+<element name="contractReference" nillable="true" type="impl:ContractReference"/>
+<element name="eligibilityStartingDate" nillable="true" type="xsd:dateTime"/>
+<element name="isEligibleContract" type="xsd:boolean"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOfContractEligibilityDetail">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:ContractEligibilityDetail"/>
+</sequence>
+</complexType>
+<complexType name="IsEligibleToNewPackageResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="contractsEligibilityDetails" nillable="true" type="impl:ArrayOfContractEligibilityDetail"/>
+<element name="eligibilityStartDate" nillable="true" type="xsd:dateTime"/>
+<element name="eligible" type="xsd:boolean"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="isEligibleToNewPackageReturn" type="impl:IsEligibleToNewPackageResponse"/>
+<complexType name="GetCommitmentForChangeOfferRequest">
+<sequence>
+<element name="contractReference" nillable="true" type="impl:ContractReference"/>
+</sequence>
+</complexType>
+<element name="getCommitmentForChangeOfferRequest" type="impl:GetCommitmentForChangeOfferRequest"/>
+<complexType name="GetCommitmentForChangeOfferResponse">
+<complexContent>
+<extension base="impl:OperationResponse">
+<sequence>
+<element name="commitmentService" nillable="true" type="impl:CommitmentService"/>
+<element name="costCenterId" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<element name="getCommitmentForChangeOfferReturn" type="impl:GetCommitmentForChangeOfferResponse"/>
+<element name="UnexpectedErrorFault" type="impl:UnexpectedErrorFault"/>
+<complexType name="UnexpectedErrorFault">
+<sequence>
+<element name="faultcode" type="xsd:string"/>
+<element name="faultstring" type="xsd:string"/>
+</sequence>
+</complexType>
+</schema>
+</wsdl:types>
+<wsdl:message name="getCommitmentForChangeOfferRequest">
+<wsdl:part element="impl:getCommitmentForChangeOfferRequest" name="getCommitmentForChangeOfferRequest"/>
+</wsdl:message>
+<wsdl:message name="getCommitmentHistoryRequest">
+<wsdl:part element="impl:getCommitmentHistoryRequest" name="getCommitmentHistoryRequest"/>
+</wsdl:message>
+<wsdl:message name="getCommitmentHistoryResponse">
+<wsdl:part element="impl:getCommitmentHistoryReturn" name="getCommitmentHistoryReturn"/>
+</wsdl:message>
+<wsdl:message name="UnexpectedError">
+<wsdl:part element="impl:UnexpectedErrorFault" name="UnexpectedError"/>
+</wsdl:message>
+<wsdl:message name="getCommitmentForChangeOfferResponse">
+<wsdl:part element="impl:getCommitmentForChangeOfferReturn" name="getCommitmentForChangeOfferReturn"/>
+</wsdl:message>
+<wsdl:message name="isEligibleToNewPackageRequest">
+<wsdl:part element="impl:isEligibleToNewPackageRequest" name="isEligibleToNewPackageRequest"/>
+</wsdl:message>
+<wsdl:message name="isEligibleToNewPackageResponse">
+<wsdl:part element="impl:isEligibleToNewPackageReturn" name="isEligibleToNewPackageReturn"/>
+</wsdl:message>
+<wsdl:portType name="CommitmentHandling">
+<wsdl:operation name="getCommitmentHistory" parameterOrder="getCommitmentHistoryRequest">
+<wsdl:input message="impl:getCommitmentHistoryRequest" name="getCommitmentHistoryRequest"/>
+<wsdl:output message="impl:getCommitmentHistoryResponse" name="getCommitmentHistoryResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="isEligibleToNewPackage" parameterOrder="isEligibleToNewPackageRequest">
+<wsdl:input message="impl:isEligibleToNewPackageRequest" name="isEligibleToNewPackageRequest"/>
+<wsdl:output message="impl:isEligibleToNewPackageResponse" name="isEligibleToNewPackageResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+<wsdl:operation name="getCommitmentForChangeOffer" parameterOrder="getCommitmentForChangeOfferRequest">
+<wsdl:input message="impl:getCommitmentForChangeOfferRequest" name="getCommitmentForChangeOfferRequest"/>
+<wsdl:output message="impl:getCommitmentForChangeOfferResponse" name="getCommitmentForChangeOfferResponse"/>
+<wsdl:fault message="impl:UnexpectedError" name="UnexpectedError"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="CommitmentHandlingSoapBinding" type="impl:CommitmentHandling">
+<wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="getCommitmentHistory">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getCommitmentHistoryRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getCommitmentHistoryResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="isEligibleToNewPackage">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="isEligibleToNewPackageRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="isEligibleToNewPackageResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="getCommitmentForChangeOffer">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getCommitmentForChangeOfferRequest">
+<wsdlsoap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getCommitmentForChangeOfferResponse">
+<wsdlsoap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="UnexpectedError">
+<wsdlsoap:fault name="UnexpectedError" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="CommitmentHandlingService">
+<wsdl:port binding="impl:CommitmentHandlingSoapBinding" name="CommitmentHandling">
+<wsdlsoap:address location="http://192.168.1.11:8080/BscsWs/services/CommitmentHandling"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>
